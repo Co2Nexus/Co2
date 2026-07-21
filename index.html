@@ -1,0 +1,3272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CO₂ Archive — Live Cultural Intelligence</title>
+<style>
+:root{
+  --text:#f7f8fb;
+  --muted:#969eab;
+  --purple:#a873ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;color:var(--text);font-family:"Helvetica Neue",Arial,sans-serif}
+body{overflow-x:hidden}
+button,a,input,select,textarea{font:inherit}
+button{cursor:pointer}
+#space{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:
+radial-gradient(circle at 50% 15%,rgba(78,43,128,.12),transparent 25%),
+radial-gradient(circle at 50% 76%,rgba(42,72,130,.06),transparent 30%),#000}
+.star{position:absolute;border-radius:50%;background:#fff;opacity:.32;animation:twinkle var(--t) ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.04;transform:scale(.75)}50%{opacity:.7;transform:scale(1.05)}}
+main{position:relative;z-index:2}
+.view{display:none!important}
+.view.active{display:block!important}
+nav{
+  position:fixed;z-index:50;top:0;left:0;right:0;height:64px;padding:0 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(to bottom,rgba(0,0,0,.94),rgba(0,0,0,0));
+}
+.logo{font-size:17px;letter-spacing:.16em}
+.navlinks{display:flex;gap:16px}
+.navlinks button,.navlinks a{background:none;border:0;color:#bec5d0;text-decoration:none;font-size:9px;letter-spacing:.16em;text-transform:uppercase;padding:0}
+
+/* HOME */
+.home{min-height:100vh;padding:104px 18px 70px;display:flex;flex-direction:column;align-items:center}
+.home-copy{text-align:center;margin-top:42px}
+.home-copy h1{font-size:48px;font-weight:250;letter-spacing:.22em;margin:0}
+.axis{width:1px;height:54px;background:linear-gradient(to bottom,rgba(255,255,255,.28),var(--purple));margin:22px auto 0}
+.axis-dot{width:6px;height:6px;border-radius:50%;background:#d9c7ff;box-shadow:0 0 12px var(--purple);margin:-3px auto 0}
+.home-tag{margin-top:24px;font-size:11px;letter-spacing:.32em;text-transform:uppercase}
+.home-sub{margin-top:13px;color:#a9b1bd;font-size:13px;letter-spacing:.04em}
+.system{
+  position:relative;width:100%;max-width:430px;height:650px;margin-top:32px;
+  border:1px solid rgba(255,255,255,.045);border-radius:30px;overflow:hidden;
+  background:radial-gradient(circle at center,rgba(87,49,140,.08),transparent 58%);
+}
+.home-orbit{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.055);border-radius:50%}
+.ho1{width:160px;height:160px}.ho2{width:260px;height:225px}.ho3{width:370px;height:320px}.ho4{width:500px;height:420px}
+.sun{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
+.sun-core{
+  width:116px;height:116px;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 29% 25%,rgba(255,255,255,.25),transparent 18%),
+  radial-gradient(circle at 70% 72%,#000 0 56%,transparent 58%),
+  radial-gradient(circle at 40% 42%,#8f62d8,#27133f 66%,#030305 100%);
+  box-shadow:0 0 38px rgba(168,115,255,.48)
+}
+.sun-core:before{content:"";position:absolute;left:-26px;right:-26px;top:49px;height:16px;border:2px solid rgba(193,158,255,.72);border-radius:50%;transform:rotate(-15deg)}
+.sun-core:after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#d9dbe2;right:-31px;top:13px}
+.sun span{display:block;margin-top:14px;font-size:10px;letter-spacing:.23em}
+.world{position:absolute;text-align:center;color:#eef0f5;background:none;border:0;padding:0;font-size:8px;letter-spacing:.1em;text-transform:uppercase}
+.world .planet{
+  width:48px;height:48px;border-radius:50%;margin:0 auto 8px;
+  background:radial-gradient(circle at 29% 25%,rgba(255,255,255,.24),transparent 17%),
+  radial-gradient(circle at 70% 72%,#000 0 57%,transparent 59%),
+  radial-gradient(circle at 40% 42%,var(--c2),var(--c1) 66%,#030305 100%);
+  box-shadow:0 0 17px var(--g)
+}
+.world small{display:block;color:#8e97a4;font-size:7px;text-transform:none;margin-top:3px}
+.w-orbit{left:7%;top:23%;--c1:#120b20;--c2:#7147a6;--g:rgba(180,116,255,.46)}
+.w-pulse{right:8%;top:20%;--c1:#071522;--c2:#275680;--g:rgba(98,174,255,.5)}
+.w-ignition{right:5%;top:48%;--c1:#081711;--c2:#2d6b51;--g:rgba(89,226,170,.42)}
+.w-launch{right:19%;bottom:8%;--c1:#1b1008;--c2:#7a4c1e;--g:rgba(255,184,77,.42)}
+.w-studio{left:19%;bottom:8%;--c1:#111;--c2:#50505b;--g:rgba(225,225,240,.28)}
+.w-archive{left:4%;top:49%;--c1:#08131d;--c2:#2e6076;--g:rgba(93,198,236,.4)}
+.w-fusion{left:39%;top:9%;--c1:#18110a;--c2:#7d6423;--g:rgba(255,215,90,.4)}
+.w-research{left:42%;bottom:1%;--c1:#12121c;--c2:#49436f;--g:rgba(147,130,255,.36)}
+
+/* SHARED */
+.page{min-height:100vh;padding-top:1px}
+.hero{padding:104px 18px 54px;display:flex;flex-direction:column;align-items:center}
+.back{align-self:flex-start;background:none;border:0;color:#cad0d9;text-transform:uppercase;font-size:10px;letter-spacing:.2em;padding:0}
+.hero-copy{text-align:center;margin-top:72px}
+.hero h1{font-size:42px;font-weight:300;letter-spacing:.2em;margin:0}
+.kicker{margin:25px 0 0;text-transform:uppercase;letter-spacing:.32em;font-size:11px}
+.sub{margin:14px auto 0;max-width:335px;color:#aab2bf;font-size:13px;line-height:1.8}
+.section{padding:78px 18px;border-top:1px solid rgba(255,255,255,.04)}
+.eyebrow{text-transform:uppercase;color:#a873ff;font-size:10px;letter-spacing:.24em;margin-bottom:14px}
+.section h2{font-size:30px;font-weight:300;letter-spacing:.12em;margin:0 0 12px}
+.section>p{color:#9fa8b6;line-height:1.75;font-size:14px;margin:0}
+
+/* ORBIT GALAXY */
+.galaxy{position:relative;width:100%;height:530px;margin-top:38px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:radial-gradient(circle at center,rgba(92,53,150,.07),transparent 58%)}
+.orbit-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(164,115,255,.06);border-radius:50%}
+.r1{width:130px;height:130px}.r2{width:220px;height:190px}.r3{width:320px;height:270px}.r4{width:440px;height:360px}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
+.core-planet{
+  width:94px;height:94px;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 28% 24%,rgba(255,255,255,.24),transparent 18%),
+  radial-gradient(circle at 70% 72%,#000 0 56%,transparent 58%),
+  radial-gradient(circle at 40% 42%,#8f62d8,#26133d 66%,#030305 100%);
+  box-shadow:0 0 30px rgba(168,115,255,.48)
+}
+.core-planet:before{content:"";position:absolute;left:-22px;right:-22px;top:39px;height:14px;border:2px solid rgba(193,158,255,.76);border-radius:50%;transform:rotate(-15deg)}
+.core-planet:after{content:"";position:absolute;width:17px;height:17px;border-radius:50%;background:#d9dbe2;right:-27px;top:9px}
+.core span{display:block;margin-top:12px;font-size:10px;letter-spacing:.22em}
+.creator{position:absolute;text-align:center;color:#e8eaf0;text-decoration:none;font-size:8px;letter-spacing:.08em}
+.creator .planet{width:34px;height:34px;border-radius:50%;margin:0 auto 7px;background:radial-gradient(circle at 28% 24%,rgba(255,255,255,.27),transparent 16%),radial-gradient(circle at 70% 72%,#000 0 58%,transparent 60%),radial-gradient(circle at 40% 42%,var(--c2),var(--c1) 66%,#030305 100%);box-shadow:0 0 12px var(--g)}
+.creator-card{display:none;position:absolute;z-index:20;width:195px;padding:15px;text-align:left;border:1px solid rgba(190,150,255,.2);border-radius:17px;background:rgba(8,7,12,.98);box-shadow:0 14px 45px #000}
+.creator:hover .creator-card,.creator:focus .creator-card{display:block}
+.creator-card h4{font-size:13px;font-weight:400;margin:0 0 12px}
+.creator-card dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:8px;font-size:10px}
+.creator-card dt{color:#7f8997}.creator-card dd{margin:0}.creator-card span{display:block;margin-top:14px;color:#c9adff;font-size:9px;text-transform:uppercase}
+.c1{left:7%;top:16%;--c1:#0c1020;--c2:#36568d;--g:rgba(90,144,255,.45)}
+.c2{left:29%;top:10%;--c1:#170b21;--c2:#6e3e8f;--g:rgba(190,104,255,.42)}
+.c3{right:17%;top:15%;--c1:#101010;--c2:#4b4b4b;--g:rgba(230,230,235,.3)}
+.c4{right:5%;top:37%;--c1:#171008;--c2:#71501e;--g:rgba(255,191,81,.4)}
+.c5{left:5%;top:46%;--c1:#07160f;--c2:#285f47;--g:rgba(91,225,169,.38)}
+.c6{left:22%;bottom:15%;--c1:#08131d;--c2:#2e6076;--g:rgba(93,198,236,.4)}
+.c7{left:48%;top:23%;--c1:#180d0d;--c2:#763b3b;--g:rgba(255,106,106,.36)}
+.c8{right:27%;bottom:11%;--c1:#0e0e19;--c2:#44406f;--g:rgba(147,130,255,.36)}
+.c9{right:7%;bottom:24%;--c1:#15100b;--c2:#6e4d34;--g:rgba(222,160,102,.35)}
+.c10{left:46%;bottom:2%;--c1:#0b1514;--c2:#365f5c;--g:rgba(101,213,204,.34)}
+.c1 .creator-card,.c2 .creator-card,.c5 .creator-card,.c6 .creator-card{left:42px;top:-12px}
+.c3 .creator-card,.c4 .creator-card,.c8 .creator-card,.c9 .creator-card{right:42px;top:-12px}
+
+/* OPPORTUNITIES */
+.opportunity-tabs{display:grid;gap:18px;margin-top:30px}
+.opportunity-tab{width:100%;text-align:left;padding:25px;border:1px solid rgba(255,255,255,.075);background:linear-gradient(135deg,rgba(116,72,183,.08),rgba(255,255,255,.018));border-radius:22px;color:#fff}
+.opportunity-tab .type{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#c5a4ff}
+.opportunity-tab h3{font-size:20px;font-weight:350;margin:13px 0 16px}
+.opportunity-tab .pick{font-size:15px;line-height:1.55}
+.opportunity-tab .pick b{color:#cbb0ff}
+.opportunity-tab .meta{color:#7f8996;font-size:11px;line-height:1.7;margin-top:10px}
+.opportunity-tab .go{display:block;margin-top:22px;font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:#ceb4ff}
+
+.op-page{padding:100px 18px 90px;min-height:100vh}
+.op-page h1{font-size:36px;font-weight:300;letter-spacing:.12em;margin:38px 0 12px}
+.op-page>.intro{color:#9fa8b6;line-height:1.75}
+.listings{display:grid;gap:16px;margin-top:30px}
+.listing{padding:22px;border:1px solid rgba(255,255,255,.07);border-radius:20px;background:rgba(255,255,255,.018)}
+.listing .tag{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#b995ff}
+.listing h3{font-size:18px;font-weight:400;margin:11px 0 9px}
+.listing p{color:#9ba4b2;font-size:12px;line-height:1.65;margin:0}
+.listing button{margin-top:16px;background:none;border:0;color:#ceb4ff;padding:0;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.post-box{margin-top:36px;padding:24px;border:1px solid rgba(169,115,255,.16);border-radius:24px;background:radial-gradient(circle at top right,rgba(135,78,220,.1),transparent 45%),rgba(255,255,255,.018)}
+.post-box h2{font-size:25px;font-weight:300;margin:0 0 8px}
+.post-box>p{color:#9ba4b2;font-size:13px;line-height:1.7}
+.form-grid{display:grid;gap:14px;margin-top:22px}
+.field label{display:block;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#919aa8;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:#09090c;color:#fff;padding:13px;outline:none}
+.field textarea{min-height:100px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit{margin-top:18px;width:100%;padding:14px;border:1px solid rgba(190,150,255,.35);border-radius:999px;background:rgba(144,88,220,.12);color:#fff;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+
+/* CUSTOMIZER */
+.customizer{margin-top:32px;padding:24px;border:1px solid rgba(255,255,255,.07);border-radius:24px;background:rgba(255,255,255,.018)}
+.preview{height:230px;display:grid;place-items:center}
+.custom-planet{
+  --p1:#15102b;--p2:#6b41a8;--glow:rgba(171,107,255,.5);--aurora:#87ffe1;--halo:#bd9cff;
+  width:132px;height:132px;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 28% 24%,rgba(255,255,255,.24),transparent 18%),
+  radial-gradient(circle at 70% 72%,#000 0 56%,transparent 58%),
+  radial-gradient(circle at 40% 42%,var(--p2),var(--p1) 66%,#030305 100%);
+  box-shadow:0 0 30px var(--glow)
+}
+.detail{display:none;position:absolute}
+.has-ring .ring-detail{display:block;left:-30px;right:-30px;top:55px;height:17px;border:2px solid var(--glow);border-radius:50%;transform:rotate(-15deg)}
+.has-moon .moon-detail{display:block;width:22px;height:22px;border-radius:50%;background:#d8dbe2;right:-35px;top:12px}
+.has-halo .halo-detail{display:block;inset:-18px;border:1px solid var(--halo);border-radius:50%;box-shadow:0 0 24px var(--halo),inset 0 0 20px var(--halo);opacity:.7}
+.has-aurora .aurora-detail{display:block;left:17px;right:17px;top:20px;height:29px;border-top:4px solid var(--aurora);border-radius:50%;filter:blur(2px);transform:rotate(-13deg);box-shadow:0 -6px 14px var(--aurora)}
+.option-group{margin-top:22px}
+.option-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#aeb6c4;margin-bottom:12px}
+.swatches{display:flex;gap:11px;flex-wrap:wrap}
+.swatch{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.14)}
+.purple{background:#6b41a8}.blue{background:#36568d}.green{background:#285f47}.gold{background:#71501e}.red{background:#763b3b}.silver{background:#555}.pink{background:#9a466f}.cyan{background:#287382}.orange{background:#8a4c21}.ice{background:#7899b4}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toggle{padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.018);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.toggle.active{border-color:rgba(190,150,255,.4);background:rgba(144,88,220,.12)}
+.color-row{display:none;margin-top:12px}
+.color-row.show{display:block}
+
+/* GRAVITY */
+.gravity{margin-top:34px;padding:29px;border:1px solid rgba(169,115,255,.16);border-radius:26px;background:radial-gradient(circle at top right,rgba(135,78,220,.11),transparent 45%),rgba(255,255,255,.018)}
+.gravity-main{text-align:center}
+.gravity-number{font-size:100px;font-weight:180;line-height:1;margin-top:12px}
+.gravity-label,.gravity-unit{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#c1a2ff}
+.gravity-unit{color:#8f98a6;margin-top:6px}
+.meter{height:4px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-top:21px}
+.meter i{display:block;width:87%;height:100%;background:linear-gradient(90deg,#6f45b3,#c6a1ff)}
+.gravity-summary{margin-top:22px;padding:18px;border:1px solid rgba(255,255,255,.055);border-radius:17px;color:#a6aebb;font-size:13px;line-height:1.75}
+.metrics{display:grid;gap:12px;margin-top:18px}
+.metric{padding:17px;border:1px solid rgba(255,255,255,.055);border-radius:16px}
+.metric-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.metric b{font-size:18px;font-weight:400}.metric strong{font-size:22px;font-weight:350}
+.metric p{color:#858f9d;font-size:11px;line-height:1.6;margin:8px 0 0}
+.metric-bar{height:3px;background:rgba(255,255,255,.07);margin-top:12px;border-radius:99px;overflow:hidden}
+.metric-bar i{display:block;height:100%;background:linear-gradient(90deg,#6f45b3,#c6a1ff)}
+.gravity-method{margin-top:22px;padding:20px;border-left:1px solid #9c71e3;color:#969fac;font-size:12px;line-height:1.75}
+.home-button{display:block;margin:72px auto 100px;padding:15px 24px;border:1px solid rgba(183,145,255,.3);border-radius:999px;color:#fff;background:none;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+
+/* DESKTOP + SAVED PROFILE PLANET */
+.core-planet{
+  --saved1:#26133d;
+  --saved2:#8f62d8;
+  --saved-glow:rgba(168,115,255,.48);
+  --saved-aurora:#87ffe1;
+  --saved-halo:#bd9cff;
+  background:
+    radial-gradient(circle at 28% 24%,rgba(255,255,255,.24),transparent 18%),
+    radial-gradient(circle at 70% 72%,#000 0 56%,transparent 58%),
+    radial-gradient(circle at 40% 42%,var(--saved2),var(--saved1) 66%,#030305 100%);
+  box-shadow:0 0 30px var(--saved-glow);
+}
+.profile-ring,.profile-moon,.profile-halo,.profile-aurora{display:none;position:absolute}
+.core-planet.has-profile-ring .profile-ring{display:block;left:-22px;right:-22px;top:39px;height:14px;border:2px solid var(--saved-glow);border-radius:50%;transform:rotate(-15deg)}
+.core-planet.has-profile-moon .profile-moon{display:block;width:17px;height:17px;border-radius:50%;background:#d9dbe2;right:-27px;top:9px;box-shadow:0 0 9px rgba(255,255,255,.4)}
+.core-planet.has-profile-halo .profile-halo{display:block;inset:-14px;border:1px solid var(--saved-halo);border-radius:50%;box-shadow:0 0 22px var(--saved-halo),inset 0 0 18px var(--saved-halo);opacity:.72}
+.core-planet.has-profile-aurora .profile-aurora{display:block;left:14px;right:14px;top:14px;height:23px;border-top:3px solid var(--saved-aurora);border-radius:50%;filter:blur(1.6px);transform:rotate(-13deg);box-shadow:0 -5px 12px var(--saved-aurora)}
+.core-planet:before,.core-planet:after{display:none!important}
+
+.save-row{margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.055)}
+.save-planet{width:100%;padding:15px 18px;border:1px solid rgba(190,150,255,.36);border-radius:999px;background:linear-gradient(90deg,rgba(109,69,179,.18),rgba(176,122,255,.12));color:#fff;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.save-status{margin-top:11px;color:#7f8996;font-size:11px;line-height:1.6;text-align:center}
+.save-status.saved{color:#c9adff}
+
+.gravity-evidence{position:relative;cursor:help;transition:border-color .2s ease,background .2s ease}
+.gravity-evidence:hover,.gravity-evidence:focus{border-color:rgba(190,150,255,.28);background:rgba(148,91,229,.06);outline:none}
+.evidence-pop{
+  display:none;
+  position:absolute;
+  z-index:30;
+  left:20px;
+  right:20px;
+  bottom:calc(100% + 12px);
+  padding:17px;
+  border:1px solid rgba(190,150,255,.24);
+  border-radius:17px;
+  background:rgba(7,7,11,.98);
+  box-shadow:0 18px 50px rgba(0,0,0,.65);
+  backdrop-filter:blur(14px);
+}
+.gravity-evidence:hover .evidence-pop,.gravity-evidence:focus .evidence-pop{display:block}
+.evidence-pop:after{content:"";position:absolute;left:28px;bottom:-6px;width:11px;height:11px;background:#08080c;border-right:1px solid rgba(190,150,255,.24);border-bottom:1px solid rgba(190,150,255,.24);transform:rotate(45deg)}
+.evidence-pop span{display:block;color:#b995ff;font-size:9px;letter-spacing:.17em;text-transform:uppercase;margin-bottom:9px}
+.evidence-pop strong{display:block;font-size:13px;font-weight:430;line-height:1.55}
+.evidence-pop small{display:block;color:#8993a2;font-size:11px;line-height:1.55;margin-top:8px}
+
+@media(min-width:900px){
+  nav{height:76px;padding:0 48px}
+  .logo{font-size:20px}
+  .navlinks{gap:28px}
+  .navlinks button,.navlinks a{font-size:10px}
+  .home{padding:120px 48px 90px}
+  .home-copy{margin-top:40px}
+  .home-copy h1{font-size:82px}
+  .home-tag{font-size:14px}
+  .home-sub{font-size:16px}
+  .system{max-width:1180px;height:760px;margin-top:48px;border-radius:38px}
+  .ho1{width:250px;height:250px}.ho2{width:470px;height:390px}.ho3{width:720px;height:560px}.ho4{width:1020px;height:700px}
+  .sun-core{width:168px;height:168px}
+  .sun-core:before{left:-38px;right:-38px;top:71px;height:22px}
+  .sun-core:after{width:24px;height:24px;right:-42px;top:18px}
+  .sun span{font-size:12px}
+  .world .planet{width:70px;height:70px}
+  .world{font-size:10px}
+  .world small{font-size:9px}
+  .w-orbit{left:12%;top:23%}
+  .w-pulse{right:13%;top:21%}
+  .w-ignition{right:9%;top:49%}
+  .w-launch{right:22%;bottom:9%}
+  .w-studio{left:22%;bottom:9%}
+  .w-archive{left:9%;top:50%}
+  .w-fusion{left:46%;top:7%}
+  .w-research{left:47%;bottom:2%}
+
+  .hero{padding:126px 48px 80px}
+  .hero-copy{margin-top:82px}
+  .hero h1{font-size:70px}
+  .kicker{font-size:13px}
+  .sub{font-size:15px;max-width:560px}
+  .galaxy{max-width:1180px;height:720px;margin-top:54px}
+  .r1{width:220px;height:220px}.r2{width:410px;height:340px}.r3{width:680px;height:520px}.r4{width:1010px;height:660px}
+  .core-planet{width:142px;height:142px}
+  .core-planet.has-profile-ring .profile-ring{left:-34px;right:-34px;top:60px;height:20px}
+  .core-planet.has-profile-moon .profile-moon{width:23px;height:23px;right:-37px;top:14px}
+  .core span{font-size:12px}
+  .creator .planet{width:48px;height:48px}
+  .creator{font-size:10px}
+  .c1{left:11%;top:16%}.c2{left:31%;top:9%}.c3{right:20%;top:14%}.c4{right:8%;top:38%}.c5{left:8%;top:47%}.c6{left:24%;bottom:14%}.c7{left:49%;top:22%}.c8{right:28%;bottom:10%}.c9{right:9%;bottom:23%}.c10{left:47%;bottom:2%}
+
+  .section{padding:100px max(48px,calc((100vw - 1180px)/2))}
+  .section h2{font-size:42px}
+  .section>p{font-size:16px;max-width:760px}
+  .opportunity-tabs{grid-template-columns:repeat(3,1fr)}
+  .opportunity-tab{min-height:300px}
+  .customizer{display:grid;grid-template-columns:minmax(360px,.9fr) minmax(420px,1.1fr);gap:48px;padding:40px}
+  .preview{height:100%;min-height:480px}
+  .custom-planet{width:220px;height:220px}
+  .has-ring .ring-detail{left:-50px;right:-50px;top:94px;height:28px}
+  .has-moon .moon-detail{width:34px;height:34px;right:-52px;top:20px}
+  .has-halo .halo-detail{inset:-28px}
+  .has-aurora .aurora-detail{left:28px;right:28px;top:34px;height:45px;border-top-width:6px}
+  .option-group:first-of-type{margin-top:0}
+  .gravity{padding:46px}
+  .gravity-number{font-size:145px}
+  .metrics{grid-template-columns:repeat(2,1fr);gap:18px}
+  .metric{min-height:190px;padding:22px}
+  .evidence-pop{left:22px;right:auto;width:360px}
+  .op-page{padding:126px max(48px,calc((100vw - 1180px)/2)) 110px}
+  .op-page h1{font-size:54px}
+  .listings{grid-template-columns:repeat(2,1fr)}
+  .post-box{padding:38px}
+  .form-grid{grid-template-columns:repeat(2,1fr)}
+  .field:has(textarea),.field:first-child{grid-column:1/-1}
+}
+
+
+/* Reliable saved profile rendering */
+#profilePlanet{
+  overflow:visible;
+  isolation:isolate;
+}
+#profilePlanet .profile-ring,
+#profilePlanet .profile-moon,
+#profilePlanet .profile-halo,
+#profilePlanet .profile-aurora{
+  pointer-events:none;
+}
+#profilePlanet.has-profile-ring .profile-ring{
+  display:block!important;
+}
+#profilePlanet.has-profile-moon .profile-moon{
+  display:block!important;
+}
+#profilePlanet.has-profile-halo .profile-halo{
+  display:block!important;
+}
+#profilePlanet.has-profile-aurora .profile-aurora{
+  display:block!important;
+}
+
+
+/* =========================================================
+   FUSION — AI-FIRST OPPORTUNITY ENGINE
+   ========================================================= */
+.fusion-view{
+  min-height:100vh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 37%,rgba(198,101,30,.11),transparent 34%),
+    radial-gradient(circle at 14% 85%,rgba(255,165,70,.04),transparent 30%),
+    #030303;
+}
+.fusion-stage{
+  min-height:100vh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  padding:100px 40px 80px;
+  isolation:isolate;
+}
+.fusion-return{
+  position:absolute;left:50px;top:105px;z-index:30;
+  border:0;background:transparent;color:#727983;
+  font-size:9px;letter-spacing:.19em;text-transform:uppercase;cursor:pointer;
+}
+.fusion-title{
+  position:absolute;top:106px;left:50%;transform:translateX(-50%);
+  color:#d9d2c8;font-size:10px;letter-spacing:.42em;text-transform:uppercase;
+  opacity:.55;z-index:20;
+}
+.fusion-dust{
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-2;
+}
+.fusion-rock{
+  position:absolute;border-radius:48% 52% 40% 60%;
+  background:linear-gradient(145deg,#362117,#130c08 55%,#050302);
+  box-shadow:inset 5px 4px 8px rgba(255,187,108,.06),0 0 20px rgba(0,0,0,.55);
+  opacity:.66;animation:driftRock var(--rock-speed) linear infinite;
+}
+@keyframes driftRock{
+  from{transform:translate3d(-15vw,var(--rock-y),0) rotate(0deg)}
+  to{transform:translate3d(115vw,calc(var(--rock-y) - 80px),0) rotate(420deg)}
+}
+.fusion-consciousness{
+  width:min(1040px,92vw);height:650px;position:relative;
+  display:grid;place-items:center;
+  perspective:1000px;
+}
+.fusion-core-wrap{
+  width:420px;height:420px;position:relative;display:grid;place-items:center;
+  transition:filter .5s ease,transform .5s ease;
+}
+.fusion-core-wrap.awake{filter:saturate(1.18);transform:scale(1.025)}
+.fusion-core-wrap:before,
+.fusion-core-wrap:after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none;
+}
+.fusion-core-wrap:before{
+  width:520px;height:520px;border:1px solid rgba(197,117,52,.18);
+  box-shadow:0 0 50px rgba(196,91,24,.07);
+  animation:fusionRotate 30s linear infinite;
+}
+.fusion-core-wrap:after{
+  width:590px;height:300px;border:1px dashed rgba(255,173,91,.17);
+  transform:rotateX(68deg) rotateZ(-9deg);
+  animation:fusionOrbit 21s linear infinite reverse;
+}
+@keyframes fusionRotate{to{transform:rotate(360deg)}}
+@keyframes fusionOrbit{
+  from{transform:rotateX(68deg) rotateZ(-9deg)}
+  to{transform:rotateX(68deg) rotateZ(351deg)}
+}
+
+
+
+
+
+.jarvis-core{
+  width:360px;height:360px;border-radius:50%;position:relative;cursor:pointer;
+  isolation:isolate;
+}
+.jarvis-core:before{
+  content:"";position:absolute;inset:18px;border-radius:50%;
+  background:
+    radial-gradient(circle,transparent 0 30%,rgba(255,247,238,.05) 44%,transparent 70%);
+  filter:blur(14px);
+  animation:voidBreath 10s ease-in-out infinite;
+}
+.jarvis-core:after{
+  content:"";position:absolute;inset:-30px;border-radius:50%;
+  border:1px solid rgba(255,250,245,.025);
+  box-shadow:0 0 90px rgba(255,238,220,.03);
+}
+
+.void-core{
+  position:absolute;left:50%;top:50%;width:112px;height:112px;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:#000;
+  border:1px solid rgba(255,250,244,.20);
+  box-shadow:
+    inset 0 0 38px #000,
+    0 0 18px rgba(255,246,236,.12),
+    0 0 68px rgba(218,179,148,.075);
+  z-index:20;
+}
+.soul-mark{
+  position:absolute;inset:0;display:grid;place-items:center;
+  color:rgba(255,251,247,.78);font-size:23px;letter-spacing:.055em;
+  font-weight:500;text-shadow:0 0 14px rgba(255,244,231,.20);
+  transition:opacity .8s ease,filter .8s ease;
+}
+.fusion-core-wrap.awake .soul-mark{opacity:.40;filter:blur(.15px)}
+
+.gravity-lens{
+  position:absolute;left:50%;top:50%;border-radius:50%;
+  transform-origin:center;pointer-events:none;z-index:2;
+}
+.lens-a{
+  width:300px;height:202px;margin-left:-150px;margin-top:-101px;
+  border:1px solid rgba(255,250,245,.07);
+  transform:rotate(16deg);
+  animation:lensSpinA 34s linear infinite;
+}
+.lens-b{
+  width:266px;height:266px;margin-left:-133px;margin-top:-133px;
+  border:1px dashed rgba(255,248,240,.05);
+  transform:rotate(-23deg);
+  animation:lensSpinB 43s linear infinite reverse;
+}
+
+.wisp-segment{
+  position:absolute;left:50%;top:50%;border-radius:50%;
+  border:2px solid transparent;
+  transform-origin:center;
+  mix-blend-mode:screen;
+  filter:drop-shadow(0 0 9px rgba(255,247,238,.32));
+  z-index:7;
+  transition:
+    transform .65s cubic-bezier(.18,.8,.22,1),
+    filter .7s ease,
+    opacity .7s ease;
+  will-change:transform;
+}
+.segment-a{
+  width:268px;height:138px;margin-left:-134px;margin-top:-69px;
+  border-top-color:rgba(255,255,252,.82);
+  border-right-color:rgba(221,190,165,.24);
+  animation:segA 14s ease-in-out infinite alternate;
+}
+.segment-b{
+  width:214px;height:224px;margin-left:-107px;margin-top:-112px;
+  border-bottom-color:rgba(255,252,247,.62);
+  border-left-color:rgba(220,187,161,.20);
+  animation:segB 17s ease-in-out infinite alternate-reverse;
+}
+.segment-c{
+  width:298px;height:98px;margin-left:-149px;margin-top:-49px;
+  border-top-color:rgba(255,255,255,.46);
+  border-left-color:rgba(219,185,157,.20);
+  animation:segC 18s ease-in-out infinite;
+}
+.segment-d{
+  width:178px;height:252px;margin-left:-89px;margin-top:-126px;
+  border-right-color:rgba(255,250,244,.44);
+  border-bottom-color:rgba(215,180,151,.17);
+  animation:segD 15s ease-in-out infinite alternate;
+}
+.segment-e{
+  width:234px;height:158px;margin-left:-117px;margin-top:-79px;
+  border-left-color:rgba(255,255,255,.34);
+  border-bottom-color:rgba(230,202,181,.17);
+  animation:segE 17.5s ease-in-out infinite alternate-reverse;
+}
+.segment-f{
+  width:312px;height:180px;margin-left:-156px;margin-top:-90px;
+  border-right-color:rgba(255,252,248,.26);
+  border-top-color:rgba(212,177,150,.14);
+  animation:segF 20s ease-in-out infinite;
+}
+.segment-g{
+  width:246px;height:112px;margin-left:-123px;margin-top:-56px;
+  border-top-color:rgba(255,255,255,.30);
+  border-left-color:rgba(225,194,169,.14);
+  animation:segG 16s ease-in-out infinite alternate;
+}
+.segment-h{
+  width:198px;height:278px;margin-left:-99px;margin-top:-139px;
+  border-bottom-color:rgba(255,250,244,.28);
+  border-right-color:rgba(218,184,156,.15);
+  animation:segH 19s ease-in-out infinite alternate-reverse;
+}
+.segment-i{
+  width:328px;height:126px;margin-left:-164px;margin-top:-63px;
+  border-left-color:rgba(255,255,255,.24);
+  border-top-color:rgba(230,203,181,.12);
+  animation:segI 22s ease-in-out infinite;
+}
+
+.energy-link{
+  position:absolute;left:50%;top:50%;height:1px;
+  transform-origin:left center;z-index:10;
+  background:linear-gradient(90deg,transparent,rgba(255,249,242,.56),transparent);
+  box-shadow:0 0 10px rgba(255,241,227,.24);
+  opacity:.05;
+}
+.link-a{width:146px;transform:rotate(25deg) translateX(42px);animation:linkPulse 6.5s ease-in-out infinite}
+.link-b{width:132px;transform:rotate(148deg) translateX(38px);animation:linkPulse 7.2s ease-in-out infinite 1.1s}
+.link-c{width:124px;transform:rotate(276deg) translateX(36px);animation:linkPulse 5.8s ease-in-out infinite 1.9s}
+
+.soul-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#fffaf4;box-shadow:0 0 8px rgba(255,243,230,.82);
+  z-index:12;opacity:.52;
+  transition:transform .5s cubic-bezier(.16,.84,.24,1);
+  will-change:transform;
+}
+.particle-a{left:18%;top:25%;animation:particleFloatA 10s ease-in-out infinite}
+.particle-b{right:16%;top:31%;animation:particleFloatB 11.2s ease-in-out infinite .7s}
+.particle-c{left:34%;bottom:13%;animation:particleFloatC 10.5s ease-in-out infinite .4s}
+.particle-d{right:25%;bottom:21%;animation:particleFloatA 12s ease-in-out infinite 1.1s}
+.particle-e{left:10%;top:54%;animation:particleFloatB 11.6s ease-in-out infinite 1.5s}
+.particle-f{right:9%;top:57%;animation:particleFloatC 10.9s ease-in-out infinite .9s}
+.particle-g{left:48%;top:8%;animation:particleFloatA 12.4s ease-in-out infinite 2s}
+.particle-h{left:6%;top:38%;animation:particleFloatC 13s ease-in-out infinite 1.4s}
+.particle-i{right:5%;top:43%;animation:particleFloatB 12.7s ease-in-out infinite .2s}
+.particle-j{left:21%;bottom:7%;animation:particleFloatA 14s ease-in-out infinite 2.2s}
+.particle-k{right:19%;bottom:9%;animation:particleFloatC 13.6s ease-in-out infinite 1.7s}
+
+.answer-glow{
+  position:absolute;left:50%;top:50%;width:160px;height:160px;
+  transform:translate(-50%,-50%) scale(.75);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,252,248,.22),rgba(255,244,232,.09) 34%,transparent 68%);
+  filter:blur(12px);
+  opacity:0;pointer-events:none;z-index:4;
+}
+.collapse-flash{
+  position:absolute;left:50%;top:50%;width:250px;height:250px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;pointer-events:none;z-index:4;opacity:0;
+  background:radial-gradient(circle,transparent 0 33%,rgba(255,247,237,.07) 35%,transparent 58%);
+}
+
+.fusion-core-wrap.awake .jarvis-core{filter:brightness(1.06)}
+.fusion-core-wrap.waking .wisp-segment{filter:drop-shadow(0 0 11px rgba(255,249,242,.38))}
+.fusion-core-wrap.waking .collapse-flash{animation:collapseRelease 1.4s ease-out}
+.fusion-core-wrap.thinking .wisp-segment{
+  filter:drop-shadow(0 0 12px rgba(255,249,242,.46));
+  opacity:.95;
+}
+.fusion-core-wrap.thinking .energy-link{
+  opacity:.55;
+}
+.fusion-core-wrap.thinking .void-core{
+  box-shadow:
+    inset 0 0 42px #000,
+    0 0 24px rgba(255,248,238,.18),
+    0 0 92px rgba(221,181,151,.10);
+}
+.fusion-core-wrap.answering .answer-glow{animation:softAnswerGlow 2.2s ease-in-out}
+
+@keyframes voidBreath{
+  0%,100%{transform:scale(.95);opacity:.28}
+  50%{transform:scale(1.08);opacity:.62}
+}
+@keyframes lensSpinA{
+  from{transform:rotate(16deg)}
+  to{transform:rotate(376deg)}
+}
+@keyframes lensSpinB{
+  from{transform:rotate(-23deg)}
+  to{transform:rotate(-383deg)}
+}
+@keyframes segA{
+  0%{transform:rotate(-18deg) translate(-6px,3px) scale(.96,.99)}
+  50%{transform:rotate(2deg) translate(10px,-7px) scale(1.04,1)}
+  100%{transform:rotate(13deg) translate(-3px,8px) scale(.99,1.03)}
+}
+@keyframes segB{
+  0%{transform:rotate(32deg) translate(8px,-4px) scale(.96)}
+  100%{transform:rotate(-8deg) translate(-11px,9px) scale(1.05)}
+}
+@keyframes segC{
+  0%,100%{transform:rotate(49deg) translate(-9px,4px) scaleX(.95);opacity:.38}
+  50%{transform:rotate(69deg) translate(11px,-8px) scaleX(1.07);opacity:.76}
+}
+@keyframes segD{
+  0%{transform:rotate(-42deg) translate(4px,-9px) scale(.94)}
+  100%{transform:rotate(-16deg) translate(-8px,11px) scale(1.04)}
+}
+@keyframes segE{
+  0%{transform:rotate(96deg) translate(-9px,-4px) scale(.95)}
+  100%{transform:rotate(121deg) translate(10px,9px) scale(1.04)}
+}
+@keyframes segF{
+  0%,100%{transform:rotate(178deg) translate(5px,-5px) scale(.97);opacity:.24}
+  50%{transform:rotate(205deg) translate(-10px,8px) scale(1.03);opacity:.50}
+}
+@keyframes segG{
+  0%{transform:rotate(235deg) translate(-6px,8px) scale(.95)}
+  100%{transform:rotate(258deg) translate(9px,-7px) scale(1.04)}
+}
+@keyframes segH{
+  0%{transform:rotate(286deg) translate(8px,3px) scale(.96)}
+  100%{transform:rotate(315deg) translate(-9px,-8px) scale(1.03)}
+}
+@keyframes segI{
+  0%,100%{transform:rotate(330deg) translate(-7px,5px) scale(.97);opacity:.20}
+  50%{transform:rotate(355deg) translate(10px,-6px) scale(1.04);opacity:.44}
+}
+@keyframes linkPulse{
+  0%,100%{opacity:.03;filter:brightness(.8)}
+  50%{opacity:.42;filter:brightness(1.25)}
+}
+@keyframes particleFloatA{
+  0%,100%{transform:translate(0,0);opacity:.22}
+  50%{transform:translate(14px,-13px);opacity:.88}
+}
+@keyframes particleFloatB{
+  0%,100%{transform:translate(0,0);opacity:.22}
+  50%{transform:translate(-13px,15px);opacity:.84}
+}
+@keyframes particleFloatC{
+  0%,100%{transform:translate(0,0);opacity:.24}
+  50%{transform:translate(11px,13px);opacity:.86}
+}
+@keyframes collapseRelease{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(1.18)}
+  40%{opacity:.55;transform:translate(-50%,-50%) scale(.62)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.30)}
+}
+@keyframes softAnswerGlow{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.72)}
+  30%{opacity:.72;transform:translate(-50%,-50%) scale(1.04)}
+  70%{opacity:.34;transform:translate(-50%,-50%) scale(1.18)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.28)}
+}
+.jarvis-status{
+  position:absolute;top:86%;left:50%;transform:translateX(-50%);
+  color:#7e746b;font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  transition:all .4s ease;white-space:nowrap;
+}
+.awake + .jarvis-status{color:#d79a64}
+
+.fusion-input-space{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(820px,88vw);text-align:center;z-index:12;pointer-events:none;
+}
+.fusion-query{
+  width:100%;min-height:110px;resize:none;overflow:hidden;
+  border:0;outline:0;background:transparent;color:#fff;
+  text-align:center;font-size:clamp(30px,4vw,64px);
+  line-height:1.08;letter-spacing:-.045em;font-weight:520;
+  caret-color:#f6ad68;opacity:0;pointer-events:none;
+  text-shadow:0 8px 35px rgba(0,0,0,.7);
+}
+.fusion-query::placeholder{color:rgba(255,255,255,.15)}
+.fusion-query.live{opacity:1;pointer-events:auto}
+.fusion-response{
+  max-width:620px;margin:14px auto 0;color:#bda995;
+  font-size:13px;line-height:1.75;min-height:23px;opacity:0;
+  transition:opacity .35s ease;
+}
+.fusion-response.show{opacity:1}
+.fusion-enter-hint{
+  position:absolute;left:50%;bottom:87px;transform:translateX(-50%);
+  color:#6c625a;font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+  opacity:0;transition:opacity .35s ease;
+}
+.fusion-enter-hint.show{opacity:1}
+
+.opportunity-board{
+  width:min(1220px,calc(100% - 76px));margin:0 auto;
+  padding:15px 0 120px;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:22px;position:relative;
+}
+.opportunity-note{
+  min-height:258px;padding:27px 27px 24px;border-radius:5px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.035),transparent 35%),
+    #12100e;
+  border:1px solid rgba(255,191,124,.12);
+  box-shadow:0 22px 60px rgba(0,0,0,.3);
+  position:relative;transform:rotate(var(--tilt));
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.opportunity-note:hover{
+  transform:rotate(0) translateY(-8px);
+  border-color:rgba(255,183,104,.28);
+  background:#16120f;
+}
+.opportunity-note:before{
+  content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  width:38px;height:3px;border-radius:10px;background:#5a3a25;
+  box-shadow:0 0 9px rgba(255,153,72,.14);
+}
+.note-kicker{color:#c88750;font-size:8px;letter-spacing:.22em;text-transform:uppercase}
+.note-match{position:absolute;right:25px;top:24px;color:#f2bd8b;font-size:25px;letter-spacing:-.04em}
+.note-match small{font-size:10px}
+.opportunity-note h3{font-size:24px;margin:26px 0 8px}
+.opportunity-note p{color:#858079;font-size:12px;line-height:1.65;margin:0}
+.note-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.note-meta span{
+  border:1px solid rgba(255,255,255,.07);border-radius:99px;
+  padding:7px 9px;color:#8f8981;font-size:9px;
+}
+.note-action{
+  position:absolute;left:27px;bottom:23px;border:0;background:transparent;
+  color:#e1a56c;font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+}
+.fusion-section-label{
+  grid-column:1/-1;padding:18px 2px 4px;color:#77716b;
+  font-size:9px;letter-spacing:.25em;text-transform:uppercase;
+}
+
+.partnership-halo{
+  position:fixed;right:32px;top:50%;transform:translateY(-50%);
+  z-index:120;width:76px;height:76px;border-radius:50%;
+  border:1px solid rgba(255,178,97,.28);background:rgba(8,6,5,.72);
+  backdrop-filter:blur(16px);cursor:pointer;
+  box-shadow:0 0 28px rgba(198,88,26,.1);
+  transition:width .45s cubic-bezier(.2,.85,.25,1),height .45s cubic-bezier(.2,.85,.25,1),border-radius .45s;
+  overflow:hidden;
+}
+.partnership-halo:before{
+  content:"";position:absolute;inset:9px;border-radius:50%;
+  border:1px dashed rgba(255,180,100,.24);animation:fusionRotate 13s linear infinite;
+}
+.partnership-halo .halo-symbol{
+  position:absolute;inset:0;display:grid;place-items:center;color:#e7ad78;
+  font-size:17px;transition:opacity .2s;
+}
+.partnership-halo.open{
+  width:330px;height:470px;border-radius:24px;cursor:default;
+}
+.partnership-halo.open:before{opacity:.15}
+.partnership-halo.open .halo-symbol{opacity:0;pointer-events:none}
+.halo-panel{opacity:0;pointer-events:none;padding:27px;transition:opacity .25s .15s}
+.partnership-halo.open .halo-panel{opacity:1;pointer-events:auto}
+.halo-panel button.close-halo{
+  float:right;border:0;background:transparent;color:#777;cursor:pointer;font-size:18px;
+}
+.halo-panel small{color:#c47d48;font-size:8px;letter-spacing:.2em;text-transform:uppercase}
+.halo-panel h3{font-size:24px;margin:12px 0 22px}
+.active-deal{
+  border-top:1px solid rgba(255,255,255,.06);padding:17px 0;
+}
+.active-deal strong{display:block;font-size:13px}
+.active-deal span{display:block;color:#7f7b76;font-size:10px;margin-top:5px}
+.deal-progress{height:2px;background:#1f1a16;margin-top:11px}
+.deal-progress i{display:block;height:100%;background:#b96831}
+
+.brand-drawer{
+  position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.72);
+  backdrop-filter:blur(12px);display:none;place-items:center;padding:30px;
+}
+.brand-drawer.open{display:grid}
+.brand-card{
+  width:min(760px,94vw);border:1px solid rgba(255,184,108,.18);
+  border-radius:25px;background:#090807;padding:34px;box-shadow:0 30px 90px rgba(0,0,0,.7);
+}
+.brand-card-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+.brand-card h2{font-size:42px;margin:7px 0 9px}
+.brand-card p{color:#88827c;font-size:13px;line-height:1.7}
+.brand-gravity{
+  min-width:112px;height:112px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(255,180,96,.25);color:#f0b67f;font-size:42px;
+  box-shadow:inset 0 0 30px rgba(195,87,28,.08);
+}
+.brand-hover{
+  position:relative;margin-top:29px;padding:19px;border:1px solid rgba(255,255,255,.06);
+  border-radius:15px;color:#9a938c;font-size:12px;cursor:help;
+}
+.brand-hover .brand-breakdown{
+  display:none;position:absolute;left:0;bottom:calc(100% + 12px);width:100%;
+  background:#0d0a08;border:1px solid rgba(255,184,104,.18);border-radius:15px;padding:18px;
+  box-shadow:0 18px 55px rgba(0,0,0,.7);
+}
+.brand-hover:hover .brand-breakdown{display:block}
+.metric-line{display:flex;justify-content:space-between;margin:9px 0;color:#918b85}
+.metric-line b{color:#e9b27b;font-weight:500}
+.brand-close{
+  float:right;border:0;background:transparent;color:#777;font-size:22px;cursor:pointer;
+}
+
+.fusion-star{
+  position:absolute;border-radius:50%;
+  background:rgba(255,255,255,.8);
+  box-shadow:0 0 6px rgba(255,255,255,.38);
+  animation:starTwinkle ease-in-out infinite;
+}
+@keyframes starTwinkle{
+  0%,100%{opacity:.15;transform:scale(.75)}
+  50%{opacity:.9;transform:scale(1.18)}
+}
+
+@media(max-width:980px){
+  .opportunity-board{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .fusion-stage{padding-left:15px;padding-right:15px}
+  .fusion-core-wrap{transform:scale(.75)}
+  .fusion-core-wrap.awake{transform:scale(.77)}
+  .fusion-query{font-size:34px}
+  .opportunity-board{width:calc(100% - 28px);grid-template-columns:1fr}
+  .partnership-halo{right:16px}
+}
+
+
+/* PULSE — same CO2 universe */
+.pulse-view{
+  --pulse-blue:#8bc8ff;
+  --pulse-blue-soft:rgba(139,200,255,.18);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 7%,rgba(48,96,145,.12),transparent 25%),
+    linear-gradient(#000,#020407 45%,#000);
+}
+.pulse-shell{width:min(1380px,calc(100% - 44px));margin:auto;padding:88px 0 110px}
+.pulse-topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pulse-back,.pulse-star{
+  border:0;background:none;color:#a8b1bd;text-transform:uppercase;
+  letter-spacing:.18em;font-size:9px;padding:8px 0
+}
+.pulse-heading{color:#6f7c89;text-transform:uppercase;letter-spacing:.24em;font-size:9px}
+.pulse-ai{
+  min-height:520px;display:grid;place-items:center;text-align:center;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.045);margin-bottom:30px;
+}
+.pulse-ai-copy{position:relative;z-index:4;width:min(760px,100%);display:flex;flex-direction:column;align-items:center}
+.pulse-soul{transform:scale(.72);height:265px;margin-top:-42px;margin-bottom:-12px}
+.pulse-soul .jarvis-core{cursor:default}
+.pulse-soul .void-core{width:105px;height:105px}
+.pulse-intro{
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#94a2b0;margin-top:-8px
+}
+.pulse-prompt{
+  width:min(720px,100%);margin-top:24px;display:grid;grid-template-columns:150px 1fr 44px;
+  align-items:center;border:1px solid rgba(255,255,255,.11);border-radius:999px;
+  background:rgba(8,12,17,.74);backdrop-filter:blur(20px);padding:6px 7px 6px 15px;
+  box-shadow:0 20px 60px rgba(0,0,0,.28)
+}
+.pulse-platform{
+  background:transparent;border:0;border-right:1px solid rgba(255,255,255,.08);
+  color:#c8d0d8;outline:none;font-size:11px
+}
+.pulse-question{border:0;background:none;outline:none;color:white;padding:12px 14px;font-size:14px;min-width:0}
+.pulse-question::placeholder{color:#606975}
+.pulse-ask{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.16);
+  background:rgba(139,200,255,.08);color:#dceeff
+}
+.pulse-answer{
+  min-height:54px;max-width:730px;margin:18px auto 0;color:#aab4bf;font-size:13px;
+  line-height:1.75;transition:.35s ease
+}
+.pulse-answer strong{color:#f5f8fb;font-weight:400}
+.pulse-suggestions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.pulse-suggestion{
+  border:1px solid rgba(255,255,255,.075);border-radius:999px;background:rgba(255,255,255,.025);
+  color:#8f9aa6;padding:8px 12px;font-size:10px
+}
+
+.pulse-profilebar{
+  display:flex;align-items:center;gap:15px;padding:14px 0 22px;border-bottom:1px solid rgba(255,255,255,.055)
+}
+.pulse-avatar{
+  width:47px;height:47px;border-radius:50%;display:grid;place-items:center;font-size:16px;
+  background:radial-gradient(circle at 34% 28%,#8fb6d7,#23384a 48%,#050709 76%);
+  box-shadow:0 0 22px rgba(99,171,229,.24)
+}
+.pulse-profilebar h1{font-size:21px;font-weight:350;margin:0 0 5px}
+.pulse-profilebar p{font-size:10px;color:#78838e;margin:0;letter-spacing:.08em}
+.pulse-profile-spacer{flex:1}
+.pulse-platform-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.pulse-platform-tab{
+  border:1px solid rgba(255,255,255,.07);background:transparent;color:#727d89;
+  padding:7px 10px;border-radius:999px;font-size:9px
+}
+.pulse-platform-tab.active{color:#dcecff;border-color:rgba(139,200,255,.25);background:rgba(139,200,255,.07)}
+
+.pulse-score-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
+.pulse-score{
+  min-height:116px;border:1px solid rgba(255,255,255,.065);border-radius:17px;padding:15px;
+  background:linear-gradient(145deg,rgba(13,18,24,.72),rgba(5,7,10,.72));position:relative;overflow:hidden
+}
+.pulse-score:after{content:"";position:absolute;width:80px;height:80px;border:1px solid rgba(139,200,255,.08);border-radius:50%;right:-34px;bottom:-38px}
+.pulse-score small{display:block;text-transform:uppercase;letter-spacing:.17em;color:#697682;font-size:8px}
+.pulse-score b{display:block;font-size:31px;font-weight:250;margin:11px 0 6px}
+.pulse-score span{display:block;font-size:9px;color:#788590}
+.pulse-score.primary{border-color:rgba(139,200,255,.18);box-shadow:inset 0 0 35px rgba(90,164,224,.035)}
+
+.pulse-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.pulse-panel{
+  border:1px solid rgba(255,255,255,.065);border-radius:20px;padding:17px;
+  background:linear-gradient(145deg,rgba(13,17,22,.73),rgba(4,6,8,.77));
+  min-height:220px;transition:.35s ease;position:relative;overflow:hidden
+}
+.pulse-panel.dim{opacity:.28;filter:saturate(.3)}
+.pulse-panel.focus{
+  border-color:rgba(139,200,255,.30);box-shadow:0 0 42px rgba(75,146,205,.09)
+}
+.pulse-panel h3{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#86939f;margin:0}
+.pulse-panel .panel-value{font-size:28px;font-weight:260;margin-top:12px}
+.pulse-panel .panel-sub{font-size:9px;color:#6d7883;margin-top:4px}
+.pulse-panel .tiny-ai{
+  position:absolute;right:14px;top:14px;width:23px;height:23px;border:1px solid rgba(255,255,255,.11);
+  border-radius:50%;display:grid;place-items:center;font-size:7px;color:#aec9df;background:#000
+}
+.pulse-panel .chart-note{font-size:9px;color:#77838e;margin-top:10px;line-height:1.45}
+.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}
+.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
+
+.pulse-chart{width:100%;height:190px;margin-top:6px;overflow:visible}
+.pulse-gridline{stroke:rgba(255,255,255,.055);stroke-width:1;stroke-dasharray:3 6}
+.pulse-line{fill:none;stroke:#a9d5fa;stroke-width:2.2;filter:drop-shadow(0 0 5px rgba(139,200,255,.28))}
+.pulse-area{fill:url(#pulseArea)}
+.pulse-dot{fill:#dcefff}
+.pulse-bar{fill:rgba(139,200,255,.25)}
+.pulse-bar.hot{fill:rgba(191,224,251,.72)}
+.pulse-axis{fill:#66727e;font-size:8px}
+.pulse-donut{width:150px;height:150px;margin:14px auto 0;display:block;transform:rotate(-90deg)}
+.pulse-donut circle{fill:none;stroke-width:10}
+.pulse-donut .track{stroke:rgba(255,255,255,.06)}
+.pulse-donut .value{stroke:#a9d5fa;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:20}
+.donut-center{position:absolute;left:50%;top:118px;transform:translate(-50%,-50%);text-align:center}
+.donut-center b{font-size:28px;font-weight:250}.donut-center span{display:block;font-size:8px;color:#72808c;text-transform:uppercase;letter-spacing:.14em}
+.retention-wrap{position:relative}
+.retention-marker{stroke:rgba(255,255,255,.25);stroke-width:1;stroke-dasharray:2 4}
+.pulse-heat{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:25px}
+.pulse-heat i{height:20px;border-radius:4px;background:rgba(139,200,255,var(--a))}
+.pulse-heat-labels{display:grid;grid-template-columns:repeat(7,1fr);font-size:7px;color:#66727e;text-align:center;margin-top:7px}
+.pulse-video-list{display:grid;gap:9px;margin-top:15px}
+.pulse-video{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding-top:9px;border-top:1px solid rgba(255,255,255,.05)}
+.pulse-video:first-child{border-top:0;padding-top:0}
+.pulse-thumb{height:33px;border-radius:6px;background:linear-gradient(135deg,#233b51,#6f8da5 45%,#151a1f)}
+.pulse-video b{display:block;font-size:10px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pulse-video span{font-size:8px;color:#6f7a84}
+.pulse-video strong{font-size:10px;font-weight:400;color:#b9d9f2}
+.pulse-radar{height:205px;width:100%;margin-top:3px}
+.radar-grid{fill:none;stroke:rgba(255,255,255,.07)}
+.radar-shape{fill:rgba(139,200,255,.12);stroke:#a9d5fa;stroke-width:1.6}
+.radar-label{fill:#697681;font-size:8px}
+.pulse-orbit-legend{display:flex;justify-content:space-between;margin-top:7px;color:#6e7b86;font-size:8px}
+.pulse-footer-note{text-align:center;color:#505b65;font-size:9px;margin-top:24px}
+.pulse-footer-note b{color:#7d8994;font-weight:400}
+
+@media(max-width:1100px){
+  .pulse-score-row{grid-template-columns:repeat(3,1fr)}
+  .span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 6}
+}
+@media(max-width:720px){
+  .pulse-shell{width:calc(100% - 28px);padding-top:76px}
+  .pulse-ai{min-height:510px}
+  .pulse-prompt{grid-template-columns:1fr 42px;border-radius:20px}
+  .pulse-platform{grid-column:1/-1;border-right:0;border-bottom:1px solid rgba(255,255,255,.08);padding:10px}
+  .pulse-score-row{grid-template-columns:repeat(2,1fr)}
+  .pulse-grid{display:block}
+  .pulse-panel{margin-bottom:10px}
+  .pulse-profilebar{align-items:flex-start;flex-wrap:wrap}
+  .pulse-profile-spacer{display:none}
+  .pulse-platform-tabs{justify-content:flex-start}
+}
+
+
+/* DESKTOP-FIRST MAC LAYOUT */
+body{
+  min-width:1180px;
+  overflow-x:auto;
+}
+.view{
+  min-width:1180px;
+}
+.pulse-shell{
+  width:min(1560px,calc(100% - 64px));
+  padding:72px 0 120px;
+}
+.pulse-ai{
+  min-height:430px;
+  margin-bottom:24px;
+}
+.pulse-ai-copy{
+  width:min(920px,100%);
+}
+.pulse-soul{
+  transform:scale(.78);
+  height:245px;
+  margin-top:-34px;
+  margin-bottom:-18px;
+}
+.pulse-prompt{
+  width:min(860px,100%);
+  grid-template-columns:165px 1fr 46px;
+}
+.pulse-question{
+  font-size:15px;
+}
+.pulse-answer{
+  max-width:880px;
+  font-size:13px;
+}
+.pulse-profilebar{
+  padding:16px 0 20px;
+}
+.pulse-score-row{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:12px;
+}
+.pulse-score{
+  min-height:124px;
+}
+.pulse-grid{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:14px;
+}
+.pulse-panel{
+  min-height:245px;
+  padding:20px;
+}
+.pulse-chart{
+  height:215px;
+}
+.pulse-donut{
+  width:168px;
+  height:168px;
+}
+.donut-center{
+  top:128px;
+}
+.pulse-radar{
+  height:225px;
+}
+.home-shell,
+.fusion-shell{
+  width:min(1560px,calc(100% - 64px));
+}
+@media(max-width:1179px){
+  body,.view{min-width:0}
+}
+
+
+/* ARCHIVE — COLD PLANET / TIME CRYSTALS */
+.archive-view{
+  min-height:100vh;
+  color:#e8f5ff;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(145,213,255,.16),transparent 24%),
+    radial-gradient(circle at 20% 30%,rgba(87,145,192,.08),transparent 26%),
+    linear-gradient(180deg,#02070b 0%,#061018 36%,#02070b 100%);
+  overflow:hidden;
+}
+.archive-shell{
+  width:min(1560px,calc(100% - 64px));
+  margin:auto;
+  padding:72px 0 120px;
+}
+.archive-topline{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:18px;
+}
+.archive-back,.archive-save{
+  border:0;background:none;color:#8fa4b5;
+  text-transform:uppercase;letter-spacing:.18em;font-size:9px;padding:8px 0;
+}
+.archive-heading{
+  color:#8fa9ba;text-transform:uppercase;letter-spacing:.24em;font-size:9px;
+}
+.archive-hero{
+  position:relative;
+  min-height:540px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:40px;
+  align-items:center;
+  border-bottom:1px solid rgba(214,239,255,.07);
+  margin-bottom:28px;
+}
+.archive-copy{
+  position:relative;z-index:3;
+  padding-left:10px;
+}
+.archive-kicker{
+  text-transform:uppercase;letter-spacing:.28em;
+  font-size:9px;color:#7d98aa;margin-bottom:16px;
+}
+.archive-title{
+  font-size:64px;line-height:.96;font-weight:220;
+  letter-spacing:-.045em;margin:0;
+}
+.archive-title span{
+  display:block;color:#a8d8f7;
+}
+.archive-sub{
+  width:min(620px,100%);
+  color:#88a0b0;font-size:13px;line-height:1.8;
+  margin:22px 0 0;
+}
+.archive-prompt{
+  width:min(700px,100%);
+  margin-top:28px;
+  display:grid;grid-template-columns:1fr 46px;gap:8px;
+}
+.archive-input{
+  border:1px solid rgba(210,239,255,.13);
+  background:rgba(2,10,16,.7);
+  color:#eff9ff;
+  border-radius:999px;padding:15px 18px;
+  outline:none;font-size:14px;
+  box-shadow:inset 0 0 30px rgba(140,211,255,.025);
+}
+.archive-input::placeholder{color:#607685}
+.archive-ask{
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(210,239,255,.18);
+  color:#dff4ff;background:rgba(140,211,255,.07);
+}
+.archive-answer{
+  min-height:48px;margin-top:16px;
+  color:#95aab9;font-size:12px;line-height:1.7;
+  max-width:700px;
+}
+.archive-answer strong{color:#f3fbff;font-weight:400}
+
+.crystal-stage{
+  position:relative;
+  height:460px;
+}
+.cold-planet{
+  position:absolute;left:50%;top:50%;
+  width:330px;height:330px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 28%,rgba(229,247,255,.95),rgba(133,195,231,.43) 12%,rgba(40,78,104,.35) 31%,rgba(7,18,27,.95) 69%),
+    radial-gradient(circle at 60% 65%,rgba(155,219,255,.22),transparent 28%);
+  box-shadow:
+    inset -34px -38px 70px rgba(0,0,0,.78),
+    inset 18px 16px 40px rgba(207,240,255,.11),
+    0 0 60px rgba(143,213,255,.16),
+    0 0 140px rgba(78,151,199,.10);
+}
+.cold-planet:before{
+  content:"";position:absolute;inset:13%;border-radius:50%;
+  background:
+    linear-gradient(124deg,transparent 8%,rgba(214,243,255,.13) 9%,transparent 11% 31%,rgba(187,231,255,.12) 32%,transparent 34% 63%,rgba(197,234,255,.09) 64%,transparent 66%),
+    linear-gradient(35deg,transparent 19%,rgba(255,255,255,.09) 20%,transparent 21% 52%,rgba(181,224,249,.10) 53%,transparent 55%);
+  filter:blur(.2px);
+}
+.cold-planet:after{
+  content:"";position:absolute;left:-70px;right:-70px;top:47%;height:12px;
+  border:1px solid rgba(173,225,255,.13);border-radius:50%;
+  transform:rotate(-12deg);
+  box-shadow:0 0 26px rgba(144,210,249,.08);
+}
+.time-crystal{
+  position:absolute;
+  width:62px;height:145px;
+  clip-path:polygon(50% 0,100% 28%,82% 100%,20% 88%,0 32%);
+  background:
+    linear-gradient(145deg,rgba(240,251,255,.78),rgba(142,205,239,.16) 45%,rgba(28,64,87,.46) 75%,rgba(212,242,255,.42));
+  border:1px solid rgba(220,244,255,.2);
+  box-shadow:0 0 24px rgba(137,205,244,.14);
+  opacity:.78;
+  backdrop-filter:blur(3px);
+}
+.tc1{left:9%;top:9%;transform:rotate(-21deg) scale(.75)}
+.tc2{left:21%;bottom:2%;transform:rotate(13deg) scale(.55)}
+.tc3{right:12%;top:15%;transform:rotate(18deg) scale(.82)}
+.tc4{right:20%;bottom:3%;transform:rotate(-12deg) scale(.62)}
+.tc5{left:43%;top:1%;transform:rotate(4deg) scale(.38)}
+.crystal-speck{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#dff5ff;box-shadow:0 0 9px #dff5ff;opacity:.65;
+}
+.cs1{left:15%;top:42%}.cs2{left:28%;top:21%}.cs3{right:23%;top:38%}
+.cs4{right:9%;bottom:24%}.cs5{left:37%;bottom:12%}.cs6{right:38%;top:10%}
+
+.archive-tabs{
+  display:flex;gap:7px;flex-wrap:wrap;
+  padding-bottom:18px;border-bottom:1px solid rgba(214,239,255,.055);
+}
+.archive-tab{
+  border:1px solid rgba(214,239,255,.075);
+  background:rgba(255,255,255,.015);
+  color:#718a9a;
+  border-radius:999px;padding:8px 12px;font-size:9px;
+}
+.archive-tab.active{
+  color:#dff4ff;border-color:rgba(173,225,255,.24);
+  background:rgba(135,205,246,.07);
+}
+.archive-metrics{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:12px;margin:18px 0;
+}
+.archive-metric{
+  min-height:112px;padding:15px;border-radius:16px;
+  border:1px solid rgba(214,239,255,.065);
+  background:linear-gradient(145deg,rgba(9,22,31,.78),rgba(2,8,13,.82));
+  position:relative;overflow:hidden;
+}
+.archive-metric:after{
+  content:"";position:absolute;inset:auto -22px -45px auto;
+  width:92px;height:92px;transform:rotate(25deg);
+  border:1px solid rgba(171,222,250,.08);
+  clip-path:polygon(50% 0,100% 30%,79% 100%,18% 87%,0 34%);
+}
+.archive-metric small{
+  display:block;font-size:8px;text-transform:uppercase;
+  letter-spacing:.17em;color:#647d8d;
+}
+.archive-metric b{
+  display:block;font-size:28px;font-weight:250;margin:12px 0 5px;
+}
+.archive-metric span{font-size:9px;color:#718797}
+
+.archive-grid{
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;
+}
+.archive-panel{
+  min-height:250px;padding:19px;border-radius:19px;
+  border:1px solid rgba(214,239,255,.065);
+  background:
+    linear-gradient(145deg,rgba(8,20,29,.80),rgba(2,8,13,.86));
+  position:relative;overflow:hidden;
+}
+.archive-panel h3{
+  font-size:10px;text-transform:uppercase;letter-spacing:.17em;
+  color:#7f98a8;margin:0;
+}
+.archive-panel .panel-value{
+  font-size:27px;font-weight:260;margin-top:12px;
+}
+.archive-panel .panel-sub{
+  color:#6b8190;font-size:9px;margin-top:4px;
+}
+.archive-panel .tiny-ai{
+  position:absolute;right:14px;top:14px;
+  width:23px;height:23px;border-radius:50%;
+  border:1px solid rgba(212,240,255,.12);
+  color:#b8ddf4;font-size:7px;display:grid;place-items:center;
+}
+.archive-chart{
+  width:100%;height:205px;margin-top:6px;overflow:visible;
+}
+.archive-gridline{
+  stroke:rgba(214,239,255,.06);stroke-width:1;stroke-dasharray:3 6;
+}
+.archive-line{
+  fill:none;stroke:#b6e3ff;stroke-width:2.1;
+  filter:drop-shadow(0 0 5px rgba(155,218,255,.22));
+}
+.archive-line-soft{
+  fill:none;stroke:rgba(182,227,255,.24);stroke-width:1.2;
+}
+.archive-area{fill:url(#archiveArea)}
+.archive-axis{fill:#657d8c;font-size:8px}
+.archive-dot{fill:#e9f8ff}
+.archive-bar{fill:rgba(157,218,255,.28)}
+.archive-bar.hot{fill:rgba(217,242,255,.72)}
+
+.pattern-river{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:10px;
+  margin-top:26px;align-items:end;
+}
+.pattern-stage{text-align:center}
+.pattern-column{
+  margin:auto;width:36px;border-radius:7px 7px 3px 3px;
+  background:linear-gradient(180deg,rgba(220,245,255,.82),rgba(104,171,210,.15));
+  box-shadow:0 0 18px rgba(164,222,255,.08);
+}
+.pattern-stage b{
+  display:block;font-size:9px;font-weight:400;margin-top:8px;color:#9ab0be;
+}
+.pattern-stage span{font-size:7px;color:#5f7482}
+.pattern-tree{
+  margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;
+}
+.pattern-node{
+  min-height:68px;border:1px solid rgba(210,239,255,.07);
+  border-radius:13px;padding:12px;background:rgba(255,255,255,.016);
+}
+.pattern-node b{font-size:10px;font-weight:400}
+.pattern-node span{display:block;font-size:8px;color:#677e8d;margin-top:6px}
+.pattern-node.origin{
+  grid-column:1/-1;text-align:center;
+  border-color:rgba(185,227,252,.14);
+}
+.archive-timeline{
+  position:relative;margin-top:26px;height:155px;
+}
+.archive-timeline:before{
+  content:"";position:absolute;left:0;right:0;top:76px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(204,237,255,.25),transparent);
+}
+.timeline-point{
+  position:absolute;top:69px;width:14px;height:14px;border-radius:50%;
+  border:1px solid rgba(224,245,255,.45);background:#07131d;
+  box-shadow:0 0 17px rgba(179,226,255,.14);
+}
+.timeline-point span{
+  position:absolute;left:50%;transform:translateX(-50%);
+  width:110px;text-align:center;color:#718795;font-size:8px;
+}
+.timeline-point.up span{bottom:24px}
+.timeline-point.down span{top:24px}
+.tp1{left:5%}.tp2{left:25%}.tp3{left:48%}.tp4{left:71%}.tp5{left:93%}
+.archive-note{
+  font-size:9px;color:#718795;line-height:1.5;margin-top:9px;
+}
+.ice-shelf{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px;
+}
+.ice-card{
+  min-height:112px;border:1px solid rgba(214,239,255,.065);
+  background:
+    linear-gradient(155deg,rgba(239,249,255,.08),rgba(87,140,171,.02) 44%,rgba(4,11,16,.6)),
+    rgba(255,255,255,.01);
+  clip-path:polygon(0 0,88% 0,100% 18%,96% 100%,7% 94%);
+  padding:13px;
+}
+.ice-card small{
+  color:#6d8391;text-transform:uppercase;letter-spacing:.13em;font-size:7px;
+}
+.ice-card b{
+  display:block;font-size:11px;font-weight:400;margin-top:20px;
+}
+.ice-card span{
+  display:block;font-size:8px;color:#69808e;margin-top:6px;
+}
+.archive-footer{
+  text-align:center;color:#516b7a;font-size:9px;margin-top:24px;
+}
+.archive-footer b{color:#7892a2;font-weight:400}
+@media(max-width:1180px){
+  .archive-hero{grid-template-columns:1fr}
+  .crystal-stage{height:400px}
+  .archive-metrics{grid-template-columns:repeat(3,1fr)}
+  .archive-grid{grid-template-columns:repeat(6,1fr)}
+  .archive-grid .span-8,.archive-grid .span-7,.archive-grid .span-6,
+  .archive-grid .span-5,.archive-grid .span-4,.archive-grid .span-3{grid-column:span 6}
+}
+
+
+/* HOME PLANET LABEL CLARITY */
+.world small{
+  display:block;
+  max-width:150px;
+  margin:5px auto 0;
+  line-height:1.25;
+  white-space:normal;
+  text-align:center;
+  opacity:.78;
+}
+.w-archive small{
+  color:#b9def2;
+  text-shadow:0 0 12px rgba(157,218,255,.25);
+}
+
+
+/* ARCHIVE INTELLIGENCE UPGRADE */
+.archive-intel-strip{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin:18px 0;
+}
+.archive-research-card{
+  border:1px solid rgba(214,239,255,.08);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(8,21,31,.88),rgba(2,8,13,.9));
+  padding:20px;position:relative;overflow:hidden;
+}
+.archive-research-card h3{
+  margin:0;color:#8ea7b7;font-size:10px;text-transform:uppercase;letter-spacing:.18em
+}
+.archive-research-card .lead{
+  font-size:26px;font-weight:260;margin-top:12px;line-height:1.15
+}
+.archive-research-card .sub{
+  font-size:10px;color:#708797;margin-top:7px;line-height:1.55
+}
+.dna-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:18px
+}
+.dna-chip{
+  min-height:78px;padding:11px;border-radius:13px;
+  border:1px solid rgba(214,239,255,.065);
+  background:rgba(255,255,255,.018)
+}
+.dna-chip small{
+  display:block;color:#637b8b;font-size:7px;text-transform:uppercase;letter-spacing:.14em
+}
+.dna-chip b{display:block;font-size:15px;font-weight:350;margin-top:9px}
+.dna-chip span{font-size:8px;color:#718695}
+.hypothesis-list{display:grid;gap:9px;margin-top:16px}
+.hypothesis{
+  display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;
+  padding:12px;border:1px solid rgba(214,239,255,.06);border-radius:13px;
+  background:rgba(255,255,255,.012)
+}
+.hypothesis b{font-size:10px;font-weight:400}
+.hypothesis span{display:block;font-size:8px;color:#6d8392;margin-top:5px}
+.hypothesis strong{font-size:18px;font-weight:260;color:#cdeeff}
+.trend-lab{
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;margin-top:14px
+}
+.trend-card{
+  position:relative;min-height:190px;border-radius:18px;padding:17px;
+  border:1px solid rgba(214,239,255,.07);
+  background:linear-gradient(145deg,rgba(10,24,34,.82),rgba(2,8,13,.88));
+  transition:.25s ease;overflow:hidden
+}
+.trend-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(185,228,252,.22);
+  box-shadow:0 14px 44px rgba(0,0,0,.28),0 0 32px rgba(122,196,238,.06)
+}
+.trend-card h4{margin:0;font-size:13px;font-weight:420}
+.trend-card p{font-size:9px;color:#6f8493;line-height:1.5;max-width:80%}
+.trend-card .stage{
+  position:absolute;right:14px;top:14px;font-size:7px;text-transform:uppercase;
+  letter-spacing:.14em;color:#8cb3cb;border:1px solid rgba(185,228,252,.1);
+  padding:5px 7px;border-radius:999px
+}
+.trend-hover{
+  position:absolute;inset:0;padding:16px;
+  background:linear-gradient(160deg,rgba(4,12,18,.96),rgba(8,23,33,.98));
+  opacity:0;pointer-events:none;transition:.24s ease;
+  display:flex;flex-direction:column;justify-content:center
+}
+.trend-card:hover .trend-hover{opacity:1}
+.trend-hover small{
+  color:#6e8797;text-transform:uppercase;letter-spacing:.14em;font-size:7px
+}
+.trend-hover b{font-size:12px;font-weight:400;margin-top:7px}
+.trend-hover span{font-size:8px;color:#78909f;margin-top:5px}
+.trend-hover em{
+  margin-top:10px;font-style:normal;font-size:9px;color:#b6def7
+}
+.cultural-map{
+  min-height:370px;position:relative;border-radius:20px;
+  border:1px solid rgba(214,239,255,.07);
+  background:
+    radial-gradient(circle at 38% 42%,rgba(112,191,235,.09),transparent 17%),
+    radial-gradient(circle at 68% 58%,rgba(112,191,235,.07),transparent 15%),
+    linear-gradient(145deg,rgba(8,21,31,.83),rgba(2,8,13,.9));
+  overflow:hidden
+}
+.cultural-map h3{
+  position:absolute;left:18px;top:18px;margin:0;color:#8ca6b6;
+  font-size:10px;text-transform:uppercase;letter-spacing:.18em
+}
+.map-line{
+  position:absolute;height:1px;background:rgba(180,226,251,.14);
+  transform-origin:left center
+}
+.map-node{
+  position:absolute;width:14px;height:14px;border-radius:50%;
+  border:1px solid rgba(222,244,255,.45);background:#07141d;
+  box-shadow:0 0 18px rgba(162,218,249,.14);cursor:pointer
+}
+.map-node:after{
+  content:attr(data-label);position:absolute;left:20px;top:-4px;
+  white-space:nowrap;color:#7d94a3;font-size:8px
+}
+.map-node:hover{
+  transform:scale(1.4);background:#bfe8ff
+}
+.platform-shift{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px
+}
+.shift-card{
+  border:1px solid rgba(214,239,255,.06);border-radius:15px;padding:14px;
+  background:rgba(255,255,255,.014)
+}
+.shift-card small{
+  display:block;font-size:7px;color:#637b8a;text-transform:uppercase;letter-spacing:.13em
+}
+.shift-card b{display:block;font-size:17px;font-weight:300;margin-top:8px}
+.shift-card p{font-size:8px;color:#718796;line-height:1.45}
+.research-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.research-action{
+  border:1px solid rgba(214,239,255,.08);background:rgba(255,255,255,.015);
+  color:#8199a8;border-radius:999px;padding:8px 11px;font-size:8px
+}
+.research-action.active{
+  color:#dff5ff;border-color:rgba(185,229,252,.24);background:rgba(139,205,246,.07)
+}
+@media(max-width:1180px){
+  .archive-intel-strip{grid-template-columns:1fr}
+  .dna-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+
+/* ARCHIVE LIVE RESEARCH SYSTEM */
+.live-system-bar{
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  margin:0 0 16px;padding:11px 14px;border-radius:14px;
+  border:1px solid rgba(205,238,255,.08);background:rgba(3,11,17,.74)
+}
+.live-indicator{display:flex;align-items:center;gap:8px;font-size:9px;color:#7590a0;text-transform:uppercase;letter-spacing:.14em}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#597182;box-shadow:0 0 0 rgba(175,231,255,0)}
+.live-dot.online{background:#c8efff;box-shadow:0 0 13px rgba(175,231,255,.6)}
+.live-query-context{font-size:9px;color:#69818f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.live-sources-btn{border:1px solid rgba(205,238,255,.09);background:none;color:#84a0af;border-radius:999px;padding:7px 10px;font-size:8px}
+.archive-source-drawer{
+  display:none;margin:-8px 0 16px;border:1px solid rgba(205,238,255,.07);
+  border-radius:14px;background:#041019;padding:13px
+}
+.archive-source-drawer.open{display:block}
+.source-row{display:grid;grid-template-columns:28px 1fr auto;gap:10px;padding:9px 0;border-bottom:1px solid rgba(205,238,255,.05)}
+.source-row:last-child{border:0}.source-index{font-size:8px;color:#66808f}
+.source-row b{font-size:9px;font-weight:400}.source-row span{font-size:8px;color:#677f8d}
+.source-row a{color:#9bcbe6;font-size:8px;text-decoration:none}
+
+.archive-answer{transition:opacity .18s ease}
+.archive-answer.rich{max-width:none}
+.ai-analysis-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:12px}
+.ai-analysis-block{padding:13px;border:1px solid rgba(205,238,255,.065);border-radius:13px;background:rgba(255,255,255,.012)}
+.ai-analysis-block small{font-size:7px;text-transform:uppercase;letter-spacing:.15em;color:#637d8c}
+.ai-analysis-block p{font-size:10px;line-height:1.65;color:#91a8b6;margin:8px 0 0}
+.ai-analysis-block b{color:#e5f6ff;font-weight:400}
+
+.crystal-stage{cursor:grab;user-select:none}
+.crystal-stage:active{cursor:grabbing}
+.cold-planet{
+  animation:planetDrift 13s ease-in-out infinite, planetSpin 42s linear infinite;
+  transform-origin:center
+}
+.cold-planet:after{animation:ringPulse 6s ease-in-out infinite}
+.time-crystal{animation:crystalFloat 7s ease-in-out infinite}
+.tc2{animation-delay:-1.4s}.tc3{animation-delay:-2.7s}.tc4{animation-delay:-4.2s}.tc5{animation-delay:-5.1s}
+.crystal-speck{animation:speckPulse 4.5s ease-in-out infinite}
+.archive-scan-line{
+  position:absolute;left:50%;top:50%;width:386px;height:386px;transform:translate(-50%,-50%);
+  border-radius:50%;border:1px solid rgba(194,235,255,.05);pointer-events:none
+}
+.archive-scan-line:before{
+  content:"";position:absolute;left:50%;top:50%;width:1px;height:50%;
+  background:linear-gradient(180deg,rgba(213,242,255,.7),transparent);
+  transform-origin:bottom;animation:archiveScan 9s linear infinite
+}
+.planet-purpose{
+  position:absolute;left:50%;bottom:2px;transform:translateX(-50%);z-index:5;
+  width:290px;text-align:center;padding:10px 13px;border:1px solid rgba(205,238,255,.08);
+  background:rgba(2,9,14,.72);backdrop-filter:blur(9px);border-radius:14px
+}
+.planet-purpose small{display:block;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:#648090}
+.planet-purpose b{display:block;font-size:11px;font-weight:400;margin-top:5px}
+.era-controls{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.era-btn{border:1px solid rgba(205,238,255,.08);background:none;color:#708997;border-radius:999px;padding:5px 8px;font-size:7px}
+.era-btn.active{color:#dff5ff;border-color:rgba(192,232,255,.26);background:rgba(142,207,245,.07)}
+@keyframes planetDrift{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes planetSpin{to{rotate:360deg}}
+@keyframes ringPulse{0%,100%{opacity:.55;scale:1}50%{opacity:1;scale:1.04}}
+@keyframes crystalFloat{0%,100%{translate:0 0;filter:brightness(.85)}50%{translate:0 -13px;filter:brightness(1.2)}}
+@keyframes speckPulse{0%,100%{opacity:.25;scale:.8}50%{opacity:.9;scale:1.4}}
+@keyframes archiveScan{from{transform:translate(-50%,-100%) rotate(0)}to{transform:translate(-50%,-100%) rotate(360deg)}}
+
+.archive-tab-feedback{
+  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;
+  min-height:72px;margin:13px 0 17px;padding:14px 16px;border-radius:15px;
+  border:1px solid rgba(205,238,255,.07);background:linear-gradient(120deg,rgba(10,25,35,.7),rgba(3,10,15,.76))
+}
+.archive-tab-feedback h4{font-size:11px;font-weight:400;margin:0}
+.archive-tab-feedback p{font-size:9px;color:#6e8695;line-height:1.55;margin:6px 0 0}
+.tab-depth{font-size:8px;color:#9bc9e2;border:1px solid rgba(205,238,255,.1);padding:7px 9px;border-radius:999px}
+
+.deep-panel{min-height:380px}
+.account-match{
+  display:grid;grid-template-columns:230px 1fr;gap:18px;margin-top:18px
+}
+.account-profile{padding:15px;border:1px solid rgba(205,238,255,.06);border-radius:15px;background:rgba(255,255,255,.014)}
+.account-profile small{font-size:7px;color:#66808f;text-transform:uppercase;letter-spacing:.15em}
+.account-profile h4{font-size:18px;font-weight:300;margin:8px 0}
+.account-profile p{font-size:8px;line-height:1.55;color:#708795}
+.lifecycle-select{width:100%;margin-top:10px;background:#06121a;color:#b7d9ec;border:1px solid rgba(205,238,255,.1);border-radius:9px;padding:8px;font-size:8px}
+.lifecycle-explanation{font-size:9px;color:#8199a8;line-height:1.6;margin-top:13px}
+.lifecycle-explanation b{color:#ddf3ff;font-weight:400}
+
+.evolution-workbench{
+  display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px;margin-top:14px
+}
+.evolution-canvas{
+  position:relative;min-height:570px;border:1px solid rgba(205,238,255,.07);border-radius:18px;
+  background:
+    linear-gradient(rgba(205,238,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(205,238,255,.025) 1px,transparent 1px),
+    radial-gradient(circle at 45% 45%,rgba(113,191,234,.07),transparent 28%),
+    rgba(2,9,14,.8);
+  background-size:34px 34px,34px 34px,auto,auto;overflow:auto;padding:24px
+}
+.evolution-flow{min-width:930px;display:grid;grid-template-columns:repeat(8,108px);gap:26px;align-items:center;min-height:500px}
+.evo-column{display:flex;flex-direction:column;gap:11px;position:relative}
+.evo-column:after{content:"";position:absolute;left:100%;top:50%;width:27px;height:1px;background:rgba(191,231,253,.18)}
+.evo-column:last-child:after{display:none}
+.evo-label{font-size:7px;letter-spacing:.13em;text-transform:uppercase;color:#587383;margin-bottom:4px}
+.evo-node{
+  padding:11px;border-radius:12px;border:1px solid rgba(205,238,255,.075);
+  background:linear-gradient(145deg,rgba(12,28,38,.86),rgba(4,12,18,.9));
+  color:#9db5c3;font-size:8px;line-height:1.4;cursor:pointer;transition:.2s
+}
+.evo-node:hover,.evo-node.active{transform:translateY(-2px);color:#e6f7ff;border-color:rgba(188,230,253,.3);box-shadow:0 0 24px rgba(122,197,237,.08)}
+.evo-node strong{display:block;font-size:10px;font-weight:400;margin-bottom:4px}
+.evo-node .score{display:block;color:#6e8b9b;font-size:7px;margin-top:5px}
+.evolution-detail{
+  min-height:570px;border:1px solid rgba(205,238,255,.07);border-radius:18px;
+  background:linear-gradient(145deg,rgba(9,23,33,.9),rgba(3,10,15,.94));padding:18px
+}
+.evolution-detail small{font-size:7px;text-transform:uppercase;letter-spacing:.16em;color:#637c8b}
+.evolution-detail h3{font-size:24px;font-weight:280;margin:10px 0 8px}
+.evolution-detail p{font-size:9px;line-height:1.65;color:#7c94a2}
+.detail-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.detail-stat{padding:10px;border:1px solid rgba(205,238,255,.06);border-radius:11px;background:rgba(255,255,255,.012)}
+.detail-stat span{display:block;font-size:7px;color:#647e8d;text-transform:uppercase;letter-spacing:.11em}
+.detail-stat b{display:block;font-size:14px;font-weight:350;margin-top:5px}
+.similar-list{margin-top:15px}
+.similar-item{padding:9px 0;border-bottom:1px solid rgba(205,238,255,.05);font-size:8px;color:#7c94a2}
+.similar-item b{color:#cfeafb;font-weight:400}
+
+.thumbnail-detail-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-top:17px}
+.thumb-era-list{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.thumb-era{position:relative;min-height:180px;border:1px solid rgba(205,238,255,.06);border-radius:13px;padding:11px;background:rgba(255,255,255,.012)}
+.thumb-visual{height:75px;border-radius:8px;margin-bottom:10px;background:radial-gradient(circle at 68% 39%,rgba(220,245,255,.65),transparent 12%),linear-gradient(135deg,rgba(91,160,199,.35),rgba(9,24,33,.9))}
+.thumb-era small{font-size:7px;color:#647e8d}.thumb-era b{display:block;font-size:9px;font-weight:400;margin-top:5px}.thumb-era p{font-size:7px;line-height:1.45;color:#6f8795}
+.thumb-metrics{display:grid;gap:7px}
+.thumb-metric-row{display:grid;grid-template-columns:120px 1fr 40px;gap:8px;align-items:center;font-size:8px;color:#7e95a3}
+.thumb-meter{height:5px;border-radius:99px;background:rgba(205,238,255,.06);overflow:hidden}
+.thumb-meter i{display:block;height:100%;background:linear-gradient(90deg,rgba(117,189,229,.25),rgba(218,244,255,.8));border-radius:inherit}
+
+.pattern-search{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:14px}
+.pattern-search input{background:#05121a;border:1px solid rgba(205,238,255,.1);border-radius:999px;padding:11px 13px;color:#dff4ff;font-size:9px}
+.pattern-search button{border:1px solid rgba(205,238,255,.12);border-radius:999px;background:rgba(144,205,239,.06);color:#b9ddef;padding:0 14px;font-size:8px}
+.pattern-results{display:grid;gap:8px;margin-top:12px}
+.pattern-result{display:grid;grid-template-columns:1fr auto;gap:12px;padding:11px;border:1px solid rgba(205,238,255,.055);border-radius:12px}
+.pattern-result b{font-size:9px;font-weight:400}.pattern-result span{display:block;font-size:8px;color:#6b8290;margin-top:4px}.pattern-result strong{font-size:16px;font-weight:300}
+
+.revival-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px}
+.revival-card{min-height:160px;padding:13px;border:1px solid rgba(205,238,255,.065);border-radius:14px;background:linear-gradient(145deg,rgba(12,28,38,.74),rgba(3,10,15,.88));cursor:pointer;transition:.2s}
+.revival-card:hover{transform:translateY(-3px);border-color:rgba(191,231,253,.2)}
+.revival-card small{font-size:7px;color:#607a89;text-transform:uppercase;letter-spacing:.12em}
+.revival-card h4{font-size:12px;font-weight:400;margin:12px 0 6px}
+.revival-card p{font-size:8px;color:#708795;line-height:1.5}
+.revival-score{margin-top:12px;font-size:18px;font-weight:300;color:#d9f2ff}
+.revival-score span{font-size:7px;color:#68818f}
+
+@media(max-width:1150px){
+ .evolution-workbench,.thumbnail-detail-grid,.ai-analysis-grid{grid-template-columns:1fr}
+ .evolution-detail{min-height:auto}.dna-grid{grid-template-columns:repeat(3,1fr)}
+ .thumb-era-list{grid-template-columns:repeat(3,1fr)}.revival-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+</style>
+</head>
+<body>
+<div id="space"></div>
+<nav>
+  <div class="logo">CO₂</div>
+  <div class="navlinks">
+    <button onclick="showView('home')">Home</button>
+    <button onclick="showView('orbit')">Orbit</button>
+    <button onclick="showView('fusion')">Fusion</button><button onclick="showView('pulse')">Pulse</button><button onclick="showView('archive')">Archive</button>
+    <a href="#">Sign In</a>
+  </div>
+</nav>
+
+<main>
+<section id="home" class="view active home">
+  <div class="home-copy">
+    <h1>CO₂</h1><div class="axis"></div><div class="axis-dot"></div>
+    <div class="home-tag">The Center of Social Media</div>
+    <div class="home-sub">Create with Purpose. Grow with Precision.</div>
+  </div>
+  <div class="system">
+    <div class="home-orbit ho1"></div><div class="home-orbit ho2"></div><div class="home-orbit ho3"></div><div class="home-orbit ho4"></div>
+    <div class="sun"><div class="sun-core"></div><span>CO₂</span></div>
+    <button class="world w-orbit" onclick="showView('orbit')"><div class="planet"></div>Orbit<small>Creator Network</small></button>
+    <button class="world w-pulse" onclick="showView('pulse')"><div class="planet"></div>Pulse<small>Analytics</small></button>
+<button class="world w-archive" onclick="showView('archive')"><div class="planet"></div>Archive<small>Patterns &amp; History</small></button>
+    <button class="world w-ignition"><div class="planet"></div>Ignition<small>Trend Intelligence</small></button>
+    <button class="world w-launch"><div class="planet"></div>Launch<small>Publishing</small></button>
+    <button class="world w-studio"><div class="planet"></div>Studio<small>Strategy</small></button>
+    <button class="world w-fusion" onclick="showView('fusion')"><div class="planet"></div>Fusion<small>Brand Deals</small></button>
+    <button class="world w-research"><div class="planet"></div>Research<small>Reports</small></button>
+  </div>
+</section>
+
+<section id="orbit" class="view page">
+  <div class="hero">
+    <button class="back" onclick="showView('home')">← Return to Home</button>
+    <div class="hero-copy">
+      <h1>ORBIT</h1><div class="axis"></div><div class="axis-dot"></div>
+      <p class="kicker">The people behind the internet</p>
+      <p class="sub">A living universe of creators, brands, and opportunities connected by CO₂.</p>
+    </div>
+    <div class="galaxy">
+      <div class="orbit-ring r1"></div><div class="orbit-ring r2"></div><div class="orbit-ring r3"></div><div class="orbit-ring r4"></div>
+      <div class="core">
+      <div id="profilePlanet" class="core-planet has-profile-ring">
+        <span class="profile-ring"></span>
+        <span class="profile-moon"></span>
+        <span class="profile-halo"></span>
+        <span class="profile-aurora"></span>
+      </div>
+      <span>CO₂</span>
+    </div>
+
+      <a class="creator c1" href="#" tabindex="0">
+        <div class="planet"></div>MrBeast
+        <div class="creator-card"><h4>MrBeast</h4><dl><dt>Gravity</dt><dd>98</dd><dt>Followers</dt><dd>390M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c2" href="#" tabindex="0">
+        <div class="planet"></div>Emma Chamberlain
+        <div class="creator-card"><h4>Emma Chamberlain</h4><dl><dt>Gravity</dt><dd>86</dd><dt>Followers</dt><dd>13M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c3" href="#" tabindex="0">
+        <div class="planet"></div>Mark Rober
+        <div class="creator-card"><h4>Mark Rober</h4><dl><dt>Gravity</dt><dd>95</dd><dt>Followers</dt><dd>70M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c4" href="#" tabindex="0">
+        <div class="planet"></div>Casey Neistat
+        <div class="creator-card"><h4>Casey Neistat</h4><dl><dt>Gravity</dt><dd>90</dd><dt>Followers</dt><dd>13M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c5" href="#" tabindex="0">
+        <div class="planet"></div>MKBHD
+        <div class="creator-card"><h4>MKBHD</h4><dl><dt>Gravity</dt><dd>91</dd><dt>Followers</dt><dd>20M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c6" href="#" tabindex="0">
+        <div class="planet"></div>Ryan Trahan
+        <div class="creator-card"><h4>Ryan Trahan</h4><dl><dt>Gravity</dt><dd>84</dd><dt>Followers</dt><dd>22M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c7" href="#" tabindex="0">
+        <div class="planet"></div>Safiya Nygaard
+        <div class="creator-card"><h4>Safiya Nygaard</h4><dl><dt>Gravity</dt><dd>88</dd><dt>Followers</dt><dd>10M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c8" href="#" tabindex="0">
+        <div class="planet"></div>Yes Theory
+        <div class="creator-card"><h4>Yes Theory</h4><dl><dt>Gravity</dt><dd>83</dd><dt>Followers</dt><dd>9M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c9" href="#" tabindex="0">
+        <div class="planet"></div>Colin and Samir
+        <div class="creator-card"><h4>Colin and Samir</h4><dl><dt>Gravity</dt><dd>81</dd><dt>Followers</dt><dd>2M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+      <a class="creator c10" href="#" tabindex="0">
+        <div class="planet"></div>Michelle Khare
+        <div class="creator-card"><h4>Michelle Khare</h4><dl><dt>Gravity</dt><dd>85</dd><dt>Followers</dt><dd>5M</dd><dt>Top platform</dt><dd>YouTube</dd></dl><span>View creator →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="eyebrow">Signals</div>
+    <h2>Opportunity, not noise.</h2>
+    <p>Explore current collaborations, brand work, and creator projects. Each section also lets you post your own opportunity.</p>
+    <div class="opportunity-tabs">
+      <button class="opportunity-tab" onclick="showView('collaborations')">
+        <div class="type">Collaborations</div><h3>Creators looking for collaboration</h3>
+        <div class="pick"><b>Top pick for you:</b> A creator is looking for collaboration in Utah</div>
+        <div class="meta">Documentary · St. George · Utah · USA · Posted 18 minutes ago</div>
+        <span class="go">Explore collaborations →</span>
+      </button>
+      <button class="opportunity-tab" onclick="showView('brands')">
+        <div class="type">Brand Opportunities</div><h3>Brands looking for content creators</h3>
+        <div class="pick"><b>Top pick for you:</b> A travel brand is looking for an outdoor storyteller</div>
+        <div class="meta">Paid campaign · Seattle · Washington · USA · Posted 42 minutes ago</div>
+        <span class="go">Explore brand opportunities →</span>
+      </button>
+      <button class="opportunity-tab" onclick="showView('projects')">
+        <div class="type">Creator Projects</div><h3>Creators building teams</h3>
+        <div class="pick"><b>Top pick for you:</b> A photographer needs a short-form editor</div>
+        <div class="meta">Social video · Salt Lake City · Utah · USA · Posted today</div>
+        <span class="go">Explore creator projects →</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">Creator Planets</div>
+    <h2>Build your world.</h2>
+    <p>Choose your planet, atmosphere, and visible details. Aurora and Halo each have their own color controls.</p>
+    <div class="customizer">
+      <div class="preview">
+        <div id="customPlanet" class="custom-planet has-ring">
+          <span class="detail ring-detail"></span><span class="detail moon-detail"></span>
+          <span class="detail halo-detail"></span><span class="detail aurora-detail"></span>
+        </div>
+      </div>
+      <div class="option-group">
+        <div class="option-label">Planet color</div>
+        <div class="swatches">
+          <button class="swatch purple" onclick="planet('#15102b','#6b41a8','rgba(171,107,255,.5)')"></button>
+          <button class="swatch blue" onclick="planet('#0c1020','#36568d','rgba(90,144,255,.48)')"></button>
+          <button class="swatch green" onclick="planet('#07160f','#285f47','rgba(91,225,169,.42)')"></button>
+          <button class="swatch gold" onclick="planet('#171008','#71501e','rgba(255,191,81,.42)')"></button>
+          <button class="swatch red" onclick="planet('#180d0d','#763b3b','rgba(255,106,106,.4)')"></button>
+          <button class="swatch silver" onclick="planet('#111','#555','rgba(230,230,235,.32)')"></button>
+          <button class="swatch pink" onclick="planet('#1c0d17','#9a466f','rgba(255,112,190,.42)')"></button>
+          <button class="swatch cyan" onclick="planet('#071519','#287382','rgba(82,224,244,.42)')"></button>
+          <button class="swatch orange" onclick="planet('#1b0d07','#8a4c21','rgba(255,134,62,.42)')"></button>
+          <button class="swatch ice" onclick="planet('#0b1118','#7899b4','rgba(170,215,255,.4)')"></button>
+        </div>
+      </div>
+      <div class="option-group">
+        <div class="option-label">Planet details</div>
+        <div class="toggles">
+          <button id="ringBtn" class="toggle active" onclick="toggleDetail('ring')">Rings</button>
+          <button id="moonBtn" class="toggle" onclick="toggleDetail('moon')">Moon</button>
+          <button id="auroraBtn" class="toggle" onclick="toggleDetail('aurora')">Aurora</button>
+          <button id="haloBtn" class="toggle" onclick="toggleDetail('halo')">Halo</button>
+        </div>
+        <div id="auroraColors" class="color-row">
+          <div class="option-label">Aurora color</div>
+          <div class="swatches">
+            <button class="swatch green" onclick="detailColor('aurora','#87ffe1')"></button>
+            <button class="swatch purple" onclick="detailColor('aurora','#bd9cff')"></button>
+            <button class="swatch blue" onclick="detailColor('aurora','#69b8ff')"></button>
+            <button class="swatch pink" onclick="detailColor('aurora','#ff8ac9')"></button>
+            <button class="swatch gold" onclick="detailColor('aurora','#ffd36b')"></button>
+          </div>
+        </div>
+        <div id="haloColors" class="color-row">
+          <div class="option-label">Halo color</div>
+          <div class="swatches">
+            <button class="swatch purple" onclick="detailColor('halo','#bd9cff')"></button>
+            <button class="swatch blue" onclick="detailColor('halo','#69b8ff')"></button>
+            <button class="swatch green" onclick="detailColor('halo','#87ffe1')"></button>
+            <button class="swatch pink" onclick="detailColor('halo','#ff8ac9')"></button>
+            <button class="swatch silver" onclick="detailColor('halo','#e5e8ef')"></button>
+          </div>
+        </div>
+      </div>
+      <div class="save-row">
+        <button class="save-planet" onclick="savePlanet()">Save planet to profile</button>
+        <div id="saveStatus" class="save-status">Your saved planet becomes the CO₂ planet at the top of Orbit.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">Gravity</div>
+    <h2>Influence beyond followers.</h2>
+    <p>Gravity is a 1 to 100 index showing how strongly a creator shapes attention, culture, collaboration, and growth.</p>
+    <div class="gravity">
+      <div class="gravity-main">
+        <div class="gravity-label">Creator Gravity</div><div class="gravity-number">87</div>
+        <div class="gravity-unit">Gravity Index · High Influence</div><div class="meter"><i></i></div>
+      </div>
+      <div class="gravity-summary">A score of 87 means this creator has strong cultural pull. Their work is frequently discovered, shared, referenced, and followed by measurable audience growth. The score is not a popularity ranking. It rewards original impact and sustained influence.</div>
+      <div class="metrics">
+        <div class="metric gravity-evidence" tabindex="0"><div class="metric-head"><b>Originality</b><strong>93</strong></div><p>How distinct your ideas, visual language, formats, and recurring concepts are.</p><div class="metric-bar"><i style="width:93%"></i></div><div class="evidence-pop"><span>Why you have this score</span><strong>Your past 3 short-form videos, 2 long-form videos, and 1 photo post averaged a 93 originality score.</strong><small>Your repeated desert-cinema framing and quiet voiceover format were rarely duplicated inside your comparison group.</small></div></div>
+        <div class="metric gravity-evidence" tabindex="0"><div class="metric-head"><b>Trend Impact</b><strong>89</strong></div><p>How often your content starts, accelerates, or meaningfully changes a trend.</p><div class="metric-bar"><i style="width:89%"></i></div><div class="evidence-pop"><span>Why you have this score</span><strong>Your content is reaching 18% of active viewers watching the trends “desert diary,” “slow travel,” and “cinematic reset.”</strong><small>Two recent posts entered those trend clusters before peak saturation and continued gaining saves after the trend slowed.</small></div></div>
+        <div class="metric gravity-evidence" tabindex="0"><div class="metric-head"><b>Audience Loyalty</b><strong>84</strong></div><p>Repeat viewership, returning engagement, watch quality, saves, and retention.</p><div class="metric-bar"><i style="width:84%"></i></div><div class="evidence-pop"><span>Why you have this score</span><strong>41% of viewers from your last 6 uploads had already watched you within the previous 30 days.</strong><small>Your long-form viewers also watched 72% of each video on average, with above-normal returns to older uploads.</small></div></div>
+        <div class="metric gravity-evidence" tabindex="0"><div class="metric-head"><b>Collaboration Lift</b><strong>81</strong></div><p>The measurable growth and engagement collaborators gain when working with you.</p><div class="metric-bar"><i style="width:81%"></i></div><div class="evidence-pop"><span>Why you have this score</span><strong>Your last 2 collaborations increased your partners’ profile visits by 24% and average watch time by 11%.</strong><small>Your audience crossed over most strongly when the collaboration included shared storytelling rather than a simple tag.</small></div></div>
+        <div class="metric gravity-evidence" tabindex="0"><div class="metric-head"><b>Channel Trending</b><strong>86</strong></div><p>Current momentum from accelerating views, discovery, search, and recommendations.</p><div class="metric-bar"><i style="width:86%"></i></div><div class="evidence-pop"><span>Why you have this score</span><strong>Your channel is being recommended 31% more often than it was 14 days ago.</strong><small>Discovery is rising across short-form recommendations, creator search, and saves that lead to later profile visits.</small></div></div>
+        <div class="metric gravity-evidence" tabindex="0"><div class="metric-head"><b>New Follower Growth</b><strong>88</strong></div><p>The speed and quality of new audience growth after temporary spikes are removed.</p><div class="metric-bar"><i style="width:88%"></i></div><div class="evidence-pop"><span>Why you have this score</span><strong>You gained 1,284 new followers from your last 6 posts, and 67% stayed active after 21 days.</strong><small>The strongest conversion came from viewers who watched at least two pieces of content before following.</small></div></div>
+      </div>
+      <div class="gravity-method">Gravity updates over time using recent and long-term performance. CO₂ weighs the six categories differently depending on platform and creator type, then normalizes the result to a 1 to 100 index. A creator can have a smaller audience and still earn high Gravity through originality, loyalty, momentum, and cultural impact.</div>
+    </div>
+  </section>
+  <button class="home-button" onclick="showView('home')">← Return to Home</button>
+</section>
+
+<section id="collaborations" class="view op-page">
+  <button class="back" onclick="showView('orbit')">← Return to Orbit</button>
+  <h1>Collaborations</h1><p class="intro">Find creators who want to make something together, exchange skills, share audiences, or build a joint concept.</p>
+  <div class="listings"><div class="listing"><div class="tag">Top match · Documentary</div><h3>Desert communities documentary</h3><p>St. George, Utah, USA · Filmmaker and interview partner wanted · Unpaid creative collaboration · October · Posted 18 minutes ago</p><button>View details →</button></div><div class="listing"><div class="tag">Photography · Travel</div><h3>Southern Utah road-trip series</h3><p>Zion and Bryce Canyon · Photographer looking for a lifestyle creator · Travel costs shared · September</p><button>View details →</button></div><div class="listing"><div class="tag">YouTube · Challenge</div><h3>One-week creative challenge</h3><p>Remote · Two creators wanted for a cross-channel video experiment · Revenue share · Applications close Friday</p><button>View details →</button></div><div class="listing"><div class="tag">Music · Short form</div><h3>Original soundtrack collaboration</h3><p>Remote · Producer seeking visual storytellers for a five-video release · Credit and shared promotion</p><button>View details →</button></div></div>
+  <div class="post-box">
+    <h2>Post your own</h2>
+    <p>Create a clear listing so the right people know what you are making, when it happens, and how to contact you.</p>
+    <div class="form-grid">
+      <div class="field"><label>Listing title</label><input placeholder="What are you looking for?"></div>
+      <div class="field"><label>Project category</label><select><option>Film and video</option><option>Photography</option><option>Editing</option><option>Music</option><option>Design</option><option>Social media</option><option>Event</option><option>Other</option></select></div>
+      <div class="field"><label>Project details</label><textarea placeholder="Describe the project, role, audience, deliverables, and expectations"></textarea></div>
+      <div class="two">
+        <div class="field"><label>Location</label><input placeholder="City, region, country or remote"></div>
+        <div class="field"><label>Date or timeline</label><input placeholder="When is it happening?"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Compensation</label><select><option>Paid</option><option>Unpaid collaboration</option><option>Trade or exchange</option><option>Negotiable</option></select></div>
+        <div class="field"><label>Contact method</label><select><option>Orbit message</option><option>Email</option><option>Instagram</option><option>Website</option><option>Application form</option></select></div>
+      </div>
+      <div class="field"><label>Contact information</label><input placeholder="Email, handle, link, or application URL"></div>
+      <div class="field"><label>Requirements</label><textarea placeholder="Experience, platform size, equipment, location, age, portfolio, or other requirements"></textarea></div>
+    </div>
+    <button class="submit" onclick="this.textContent='Preview created'">Preview listing</button>
+  </div>
+</section>
+<section id="brands" class="view op-page">
+  <button class="back" onclick="showView('orbit')">← Return to Orbit</button>
+  <h1>Brand Opportunities</h1><p class="intro">Browse paid partnerships, product campaigns, ambassador work, and brand requests matched to your content.</p>
+  <div class="listings"><div class="listing"><div class="tag">Top match · Paid</div><h3>Outdoor travel campaign</h3><p>Seattle, Washington, USA · Three short-form videos · Travel and lifestyle creator · Fall launch · Posted 42 minutes ago</p><button>View details →</button></div><div class="listing"><div class="tag">Paid · Beauty</div><h3>Skin-care launch series</h3><p>Remote, USA · Five vertical videos · Usage rights for three months · Budget listed after application</p><button>View details →</button></div><div class="listing"><div class="tag">Paid · Technology</div><h3>Creator workflow campaign</h3><p>Remote · YouTube integration and two short-form cutdowns · Technology or productivity audience</p><button>View details →</button></div><div class="listing"><div class="tag">Paid · Hospitality</div><h3>Boutique hotel creator stay</h3><p>Palm Springs, California, USA · Two-night stay plus fee · Photography and short-form deliverables</p><button>View details →</button></div></div>
+  <div class="post-box">
+    <h2>Post your own</h2>
+    <p>Create a clear listing so the right people know what you are making, when it happens, and how to contact you.</p>
+    <div class="form-grid">
+      <div class="field"><label>Listing title</label><input placeholder="What are you looking for?"></div>
+      <div class="field"><label>Project category</label><select><option>Film and video</option><option>Photography</option><option>Editing</option><option>Music</option><option>Design</option><option>Social media</option><option>Event</option><option>Other</option></select></div>
+      <div class="field"><label>Project details</label><textarea placeholder="Describe the project, role, audience, deliverables, and expectations"></textarea></div>
+      <div class="two">
+        <div class="field"><label>Location</label><input placeholder="City, region, country or remote"></div>
+        <div class="field"><label>Date or timeline</label><input placeholder="When is it happening?"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Compensation</label><select><option>Paid</option><option>Unpaid collaboration</option><option>Trade or exchange</option><option>Negotiable</option></select></div>
+        <div class="field"><label>Contact method</label><select><option>Orbit message</option><option>Email</option><option>Instagram</option><option>Website</option><option>Application form</option></select></div>
+      </div>
+      <div class="field"><label>Contact information</label><input placeholder="Email, handle, link, or application URL"></div>
+      <div class="field"><label>Requirements</label><textarea placeholder="Experience, platform size, equipment, location, age, portfolio, or other requirements"></textarea></div>
+    </div>
+    <button class="submit" onclick="this.textContent='Preview created'">Preview listing</button>
+  </div>
+</section>
+<section id="projects" class="view op-page">
+  <button class="back" onclick="showView('orbit')">← Return to Orbit</button>
+  <h1>Creator Projects</h1><p class="intro">Join productions and creator-led teams looking for editors, photographers, designers, writers, talent, and other specialists.</p>
+  <div class="listings"><div class="listing"><div class="tag">Top match · Editing</div><h3>Short-form video editor</h3><p>Salt Lake City, Utah, USA · Remote friendly · Two-week project · Paid per deliverable · Posted today</p><button>View details →</button></div><div class="listing"><div class="tag">Film · Production</div><h3>Production assistant for short film</h3><p>Las Vegas, Nevada, USA · Two shoot days · Paid day rate · Experience preferred</p><button>View details →</button></div><div class="listing"><div class="tag">Design · Branding</div><h3>YouTube channel visual redesign</h3><p>Remote · Thumbnail system, banner, and style guide · Fixed project budget</p><button>View details →</button></div><div class="listing"><div class="tag">Social · Strategy</div><h3>Launch content coordinator</h3><p>Remote · Four-week creator product launch · Scheduling, captions, and campaign support · Paid</p><button>View details →</button></div></div>
+  <div class="post-box">
+    <h2>Post your own</h2>
+    <p>Create a clear listing so the right people know what you are making, when it happens, and how to contact you.</p>
+    <div class="form-grid">
+      <div class="field"><label>Listing title</label><input placeholder="What are you looking for?"></div>
+      <div class="field"><label>Project category</label><select><option>Film and video</option><option>Photography</option><option>Editing</option><option>Music</option><option>Design</option><option>Social media</option><option>Event</option><option>Other</option></select></div>
+      <div class="field"><label>Project details</label><textarea placeholder="Describe the project, role, audience, deliverables, and expectations"></textarea></div>
+      <div class="two">
+        <div class="field"><label>Location</label><input placeholder="City, region, country or remote"></div>
+        <div class="field"><label>Date or timeline</label><input placeholder="When is it happening?"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Compensation</label><select><option>Paid</option><option>Unpaid collaboration</option><option>Trade or exchange</option><option>Negotiable</option></select></div>
+        <div class="field"><label>Contact method</label><select><option>Orbit message</option><option>Email</option><option>Instagram</option><option>Website</option><option>Application form</option></select></div>
+      </div>
+      <div class="field"><label>Contact information</label><input placeholder="Email, handle, link, or application URL"></div>
+      <div class="field"><label>Requirements</label><textarea placeholder="Experience, platform size, equipment, location, age, portfolio, or other requirements"></textarea></div>
+    </div>
+    <button class="submit" onclick="this.textContent='Preview created'">Preview listing</button>
+  </div>
+</section>
+
+
+<section id="pulse" class="view pulse-view">
+  <div class="pulse-shell">
+    <div class="pulse-topline">
+      <button class="pulse-back" onclick="showView('home')">← Return to system</button>
+      <div class="pulse-heading">Pulse · Analytics Intelligence</div>
+      <button class="pulse-star" id="pulseStar">☆ Star creator</button>
+    </div>
+
+    <section class="pulse-ai" id="pulseAIStage">
+      <div class="pulse-ai-copy">
+        <div class="pulse-soul">
+          <div class="jarvis-core" id="pulseSoul">
+            <div class="gravity-lens lens-a"></div><div class="gravity-lens lens-b"></div>
+            <div class="void-core"><div class="soul-mark">CO₂</div></div>
+            <div class="wisp-segment segment-a"></div><div class="wisp-segment segment-b"></div>
+            <div class="wisp-segment segment-c"></div><div class="wisp-segment segment-d"></div>
+            <div class="wisp-segment segment-e"></div><div class="wisp-segment segment-f"></div>
+            <div class="wisp-segment segment-g"></div><div class="wisp-segment segment-h"></div>
+            <div class="wisp-segment segment-i"></div>
+            <div class="soul-particle particle-a"></div><div class="soul-particle particle-b"></div>
+            <div class="soul-particle particle-c"></div><div class="soul-particle particle-d"></div>
+            <div class="soul-particle particle-e"></div><div class="soul-particle particle-f"></div>
+            <div class="soul-particle particle-g"></div><div class="soul-particle particle-h"></div>
+            <div class="answer-glow"></div>
+          </div>
+        </div>
+        <div class="pulse-intro">Ask CO₂ to read the signal</div>
+        <div class="pulse-prompt">
+          <select class="pulse-platform" id="pulsePlatform">
+            <option>YouTube</option><option>Instagram</option><option>TikTok</option>
+            <option>X</option><option>Threads</option><option>Facebook</option>
+            <option>LinkedIn</option><option>Pinterest</option><option>Twitch</option>
+            <option>Kick</option><option>Spotify</option><option>Podcast</option><option>OnlyFans</option>
+          </select>
+          <input class="pulse-question" id="pulseQuestion" value="Give me an overview of MrBeast" aria-label="Ask Pulse about this account">
+          <button class="pulse-ask" id="pulseAsk">↑</button>
+        </div>
+        <div class="pulse-answer" id="pulseAnswer">
+          <strong>MrBeast’s scale is obvious. His repeatability is the real advantage.</strong>
+          The channel turns enormous ideas into instantly understandable stories, then uses pacing and payoff to keep a global audience moving toward the same moment.
+        </div>
+        <div class="pulse-suggestions">
+          <button class="pulse-suggestion" data-prompt="Show me MrBeast's growth">Growth</button>
+          <button class="pulse-suggestion" data-prompt="Why is MrBeast's retention so strong?">Retention</button>
+          <button class="pulse-suggestion" data-prompt="Explain MrBeast's audience">Audience</button>
+          <button class="pulse-suggestion" data-prompt="What should MrBeast improve?">Brutal truth</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="pulse-profilebar">
+      <div class="pulse-avatar">MB</div>
+      <div>
+        <h1>MrBeast</h1>
+        <p>@MRBEAST · GLOBAL ENTERTAINMENT · DEMO ANALYSIS</p>
+      </div>
+      <div class="pulse-profile-spacer"></div>
+      <div class="pulse-platform-tabs">
+        <button class="pulse-platform-tab active">YouTube</button>
+        <button class="pulse-platform-tab">Instagram</button>
+        <button class="pulse-platform-tab">TikTok</button>
+        <button class="pulse-platform-tab">X</button>
+        <button class="pulse-platform-tab">All platforms</button>
+      </div>
+    </div>
+
+    <section class="pulse-score-row">
+      <article class="pulse-score primary"><small>Subscribers</small><b>508M</b><span>+8M in ~6 weeks</span></article>
+      <article class="pulse-score primary"><small>Total views</small><b>133B</b><span>Public channel total</span></article>
+      <article class="pulse-score"><small>Gravity</small><b>99</b><span>Global attention pull</span></article>
+      <article class="pulse-score"><small>Trust</small><b>94</b><span>High repeat belief</span></article>
+      <article class="pulse-score"><small>Probability</small><b>91%</b><span>Next upload beats baseline</span></article>
+      <article class="pulse-score"><small>Active signal</small><b>↑</b><span>Momentum accelerating</span></article>
+    </section>
+
+    <section class="pulse-grid" id="pulseDashboard">
+      <article class="pulse-panel span-8" data-topic="growth overview">
+        <span class="tiny-ai">CO₂</span>
+        <h3>Subscriber velocity</h3>
+        <div class="panel-value">500M → 508M</div>
+        <div class="panel-sub">June–July 2026 public milestone trend</div>
+        <svg class="pulse-chart" viewBox="0 0 700 190" preserveAspectRatio="none" role="img" aria-label="MrBeast subscriber growth">
+          <defs><linearGradient id="pulseArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ed2ff" stop-opacity=".24"/><stop offset="1" stop-color="#9ed2ff" stop-opacity="0"/></linearGradient></defs>
+          <line class="pulse-gridline" x1="0" y1="45" x2="700" y2="45"/><line class="pulse-gridline" x1="0" y1="95" x2="700" y2="95"/><line class="pulse-gridline" x1="0" y1="145" x2="700" y2="145"/>
+          <path class="pulse-area" d="M0 162 C70 157,90 153,135 147 S220 137,275 127 S360 112,410 99 S490 83,545 64 S625 40,700 27 L700 188 L0 188Z"/>
+          <path class="pulse-line" d="M0 162 C70 157,90 153,135 147 S220 137,275 127 S360 112,410 99 S490 83,545 64 S625 40,700 27"/>
+          <circle class="pulse-dot" cx="700" cy="27" r="4"/>
+          <text class="pulse-axis" x="0" y="186">Jun 12 · 500M</text><text class="pulse-axis" x="626" y="186">Now · 508M</text>
+        </svg>
+        <div class="chart-note">The important signal is not one viral spike. The audience baseline continues rising between uploads.</div>
+      </article>
+
+      <article class="pulse-panel span-4" data-topic="overview trust">
+        <span class="tiny-ai">CO₂</span><h3>Trust</h3>
+        <svg class="pulse-donut" viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="45"/><circle class="value" cx="60" cy="60" r="45"/></svg>
+        <div class="donut-center"><b>94</b><span>Trust score</span></div>
+        <div class="chart-note">Scale has not erased familiarity. Viewers still understand the promise before clicking.</div>
+      </article>
+
+      <article class="pulse-panel span-7 retention-wrap" data-topic="retention overview">
+        <span class="tiny-ai">CO₂</span><h3>Estimated retention anatomy</h3>
+        <div class="panel-value">Strongest signal: payoff anticipation</div>
+        <svg class="pulse-chart" viewBox="0 0 640 190" preserveAspectRatio="none" role="img" aria-label="Illustrative viewer retention curve">
+          <line class="pulse-gridline" x1="0" y1="45" x2="640" y2="45"/><line class="pulse-gridline" x1="0" y1="95" x2="640" y2="95"/><line class="pulse-gridline" x1="0" y1="145" x2="640" y2="145"/>
+          <path class="pulse-area" d="M0 22 C60 34,96 43,145 50 S230 65,285 69 S380 82,435 96 S530 111,640 132 L640 188 L0 188Z"/>
+          <path class="pulse-line" d="M0 22 C60 34,96 43,145 50 S230 65,285 69 S380 82,435 96 S530 111,640 132"/>
+          <line class="retention-marker" x1="142" y1="12" x2="142" y2="176"/><line class="retention-marker" x1="438" y1="12" x2="438" y2="176"/>
+          <text class="pulse-axis" x="8" y="185">Hook</text><text class="pulse-axis" x="125" y="185">Rules clear</text><text class="pulse-axis" x="416" y="185">Escalation</text><text class="pulse-axis" x="595" y="185">Payoff</text>
+        </svg>
+        <div class="chart-note">Illustrative CO₂ model: frequent stakes, visible progress, and a promised ending reduce “dead zones.”</div>
+      </article>
+
+      <article class="pulse-panel span-5" data-topic="probability overview">
+        <span class="tiny-ai">CO₂</span><h3>Upload probability</h3>
+        <div class="panel-value">91%</div><div class="panel-sub">Chance next main-channel upload clears its recent baseline</div>
+        <svg class="pulse-chart" viewBox="0 0 430 170" preserveAspectRatio="none">
+          <rect class="pulse-bar" x="15" y="108" width="52" height="47" rx="4"/><rect class="pulse-bar" x="84" y="82" width="52" height="73" rx="4"/>
+          <rect class="pulse-bar" x="153" y="95" width="52" height="60" rx="4"/><rect class="pulse-bar" x="222" y="55" width="52" height="100" rx="4"/>
+          <rect class="pulse-bar hot" x="291" y="24" width="52" height="131" rx="4"/><rect class="pulse-bar" x="360" y="66" width="52" height="89" rx="4"/>
+          <text class="pulse-axis" x="17" y="168">Idea</text><text class="pulse-axis" x="83" y="168">Title</text><text class="pulse-axis" x="147" y="168">Thumb</text><text class="pulse-axis" x="221" y="168">Hook</text><text class="pulse-axis" x="286" y="168">Payoff</text><text class="pulse-axis" x="357" y="168">Timing</text>
+        </svg>
+      </article>
+
+      <article class="pulse-panel span-4" data-topic="audience overview">
+        <span class="tiny-ai">CO₂</span><h3>Audience reach</h3>
+        <div class="panel-value">Global-first</div>
+        <div class="pulse-heat">
+          <i style="--a:.28"></i><i style="--a:.42"></i><i style="--a:.58"></i><i style="--a:.86"></i><i style="--a:.72"></i><i style="--a:.48"></i><i style="--a:.31"></i>
+          <i style="--a:.35"></i><i style="--a:.52"></i><i style="--a:.76"></i><i style="--a:.95"></i><i style="--a:.84"></i><i style="--a:.57"></i><i style="--a:.37"></i>
+          <i style="--a:.22"></i><i style="--a:.41"></i><i style="--a:.64"></i><i style="--a:.88"></i><i style="--a:.71"></i><i style="--a:.45"></i><i style="--a:.25"></i>
+          <i style="--a:.18"></i><i style="--a:.32"></i><i style="--a:.54"></i><i style="--a:.69"></i><i style="--a:.61"></i><i style="--a:.35"></i><i style="--a:.20"></i>
+        </div>
+        <div class="pulse-heat-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+        <div class="chart-note">The format travels because the central question survives translation: who wins, who lasts, and what happens next?</div>
+      </article>
+
+      <article class="pulse-panel span-4" data-topic="content overview retention">
+        <span class="tiny-ai">CO₂</span><h3>Recent content signal</h3>
+        <div class="pulse-video-list">
+          <div class="pulse-video"><div class="pulse-thumb"></div><div><b>Large-scale challenge</b><span>75M views · 3 weeks</span></div><strong>1.4×</strong></div>
+          <div class="pulse-video"><div class="pulse-thumb"></div><div><b>Competition format</b><span>High early velocity</span></div><strong>1.2×</strong></div>
+          <div class="pulse-video"><div class="pulse-thumb"></div><div><b>Transformation story</b><span>Strong emotional finish</span></div><strong>1.1×</strong></div>
+          <div class="pulse-video"><div class="pulse-thumb"></div><div><b>Pure spectacle</b><span>Broad clicks, softer loyalty</span></div><strong>.9×</strong></div>
+        </div>
+        <div class="chart-note">CO₂ separates “big because it is expensive” from “big because the story is instantly legible.”</div>
+      </article>
+
+      <article class="pulse-panel span-4" data-topic="overview brutal audience">
+        <span class="tiny-ai">CO₂</span><h3>Creator DNA</h3>
+        <svg class="pulse-radar" viewBox="0 0 260 220">
+          <polygon class="radar-grid" points="130,20 220,75 202,178 58,178 40,75"/>
+          <polygon class="radar-grid" points="130,50 190,87 178,155 82,155 70,87"/>
+          <polygon class="radar-shape" points="130,27 213,79 188,166 70,165 50,78"/>
+          <text class="radar-label" x="111" y="14">Clarity</text><text class="radar-label" x="222" y="78">Scale</text>
+          <text class="radar-label" x="185" y="196">Trust</text><text class="radar-label" x="32" y="196">Novelty</text><text class="radar-label" x="4" y="78">Pacing</text>
+        </svg>
+      </article>
+
+      <article class="pulse-panel span-6" data-topic="brutal improvement overview">
+        <span class="tiny-ai">CO₂</span><h3>Brutal truth</h3>
+        <div class="panel-value">Bigger is no longer automatically better.</div>
+        <div class="panel-sub">The risk created by extreme scale</div>
+        <svg class="pulse-chart" viewBox="0 0 520 160" preserveAspectRatio="none">
+          <path class="pulse-line" d="M0 128 C80 120,115 102,170 80 S265 38,320 47 S425 81,520 113"/>
+          <circle class="pulse-dot" cx="320" cy="47" r="4"/>
+          <text class="pulse-axis" x="0" y="155">Simple idea</text><text class="pulse-axis" x="280" y="155">Ideal tension</text><text class="pulse-axis" x="449" y="155">Overbuilt</text>
+        </svg>
+        <div class="chart-note">When spectacle becomes the premise instead of supporting it, the video may earn clicks without creating the same memory or trust.</div>
+      </article>
+
+      <article class="pulse-panel span-6" data-topic="growth prediction overview">
+        <span class="tiny-ai">CO₂</span><h3>Forward signal</h3>
+        <div class="panel-value">508M → 550M</div>
+        <div class="panel-sub">Scenario, not a guarantee</div>
+        <svg class="pulse-chart" viewBox="0 0 520 160" preserveAspectRatio="none">
+          <line class="pulse-gridline" x1="0" y1="50" x2="520" y2="50"/><line class="pulse-gridline" x1="0" y1="105" x2="520" y2="105"/>
+          <path class="pulse-line" d="M0 132 C90 125,145 112,210 96 S330 67,390 48 S465 31,520 20"/>
+          <path d="M0 145 C90 139,145 130,210 116 S330 90,390 72 S465 56,520 45" fill="none" stroke="rgba(169,213,250,.22)" stroke-width="1" stroke-dasharray="4 6"/>
+          <path d="M0 118 C90 111,145 94,210 77 S330 46,390 30 S465 17,520 10" fill="none" stroke="rgba(169,213,250,.22)" stroke-width="1" stroke-dasharray="4 6"/>
+          <text class="pulse-axis" x="0" y="157">Now</text><text class="pulse-axis" x="455" y="157">Scenario range</text>
+        </svg>
+        <div class="chart-note">If upload quality and international distribution hold, subscriber growth remains structurally strong. CO₂ would monitor view velocity between uploads before tightening the forecast.</div>
+      </article>
+    </section>
+
+    <div class="pulse-footer-note">
+      <b>Demo mode:</b> public subscriber and view totals are current examples; proprietary scores, retention curves, probability, and forecasts are illustrative CO₂ outputs.
+    </div>
+  </div>
+</section>
+
+
+<section id="archive" class="view archive-view">
+  <div class="archive-shell">
+    <div class="archive-topline">
+      <button class="archive-back" onclick="showView('home')">← Return to system</button>
+      <div class="archive-heading">Archive · Cultural Memory</div>
+      <button class="archive-save" id="archiveSave">◇ Preserve search</button>
+    </div>
+
+    
+<div class="live-system-bar">
+  <div class="live-indicator"><i class="live-dot" id="liveDot"></i><span id="liveState">Local research mode</span></div>
+  <div class="live-query-context" id="liveContext">Connect the server to search current public web information and return cited analysis.</div>
+  <button class="live-sources-btn" id="sourcesBtn">Sources <span id="sourceCount">0</span></button>
+</div>
+<div class="archive-source-drawer" id="sourceDrawer"></div>
+
+<section class="archive-hero">
+      <div class="archive-copy">
+        <div class="archive-kicker">The cold planet</div>
+        <h1 class="archive-title">Nothing disappears.<span>It freezes in time.</span></h1>
+        <p class="archive-sub">
+          Archive studies human behavior, reconstructs cultural evolution, and turns historical patterns into strategic predictions.
+          Search a moment, inspect a trend’s DNA, test competing explanations, or ask what marketing strategy and platform shift history suggests comes next.
+        </p>
+
+        <div class="archive-prompt">
+          <input class="archive-input" id="archiveInput" value="Show me how MrBeast's thumbnails evolved" aria-label="Ask Archive">
+          <button class="archive-ask" id="archiveAsk">↑</button>
+        </div>
+
+        <div class="archive-answer" id="archiveAnswer">
+          <strong>The evolution is less about becoming louder and more about becoming instantly legible.</strong>
+          Early thumbnails explained the event. Later thumbnails compress the entire emotional stakes into one face, one object, and one impossible question.
+        </div>
+      </div>
+
+      <div class="crystal-stage" aria-label="Frozen planet surrounded by time crystals">
+        <div class="time-crystal tc1"></div><div class="time-crystal tc2"></div>
+        <div class="time-crystal tc3"></div><div class="time-crystal tc4"></div>
+        <div class="time-crystal tc5"></div>
+        <div class="archive-scan-line"></div>
+        <div class="cold-planet" id="archivePlanet" title="Drag to scan cultural time"></div>
+        <div class="planet-purpose">
+          <small>Temporal research scanner</small>
+          <b id="eraReadout">Scanning 2016–2026 · full cultural record</b>
+          <div class="era-controls">
+            <button class="era-btn" data-era="2005–2014">Origins</button>
+            <button class="era-btn" data-era="2015–2020">Acceleration</button>
+            <button class="era-btn active" data-era="2021–2026">Current cycle</button>
+          </div>
+        </div>
+        <i class="crystal-speck cs1"></i><i class="crystal-speck cs2"></i><i class="crystal-speck cs3"></i>
+        <i class="crystal-speck cs4"></i><i class="crystal-speck cs5"></i><i class="crystal-speck cs6"></i>
+      </div>
+    </section>
+
+    <div class="archive-tabs">
+      <button class="archive-tab active">Trend Patterns</button>
+      <button class="archive-tab">Creator History</button>
+      <button class="archive-tab">Campaigns</button>
+      <button class="archive-tab">Visual Evolution</button>
+      <button class="archive-tab">Internet on a Date</button>
+      <button class="archive-tab">Deleted Signals</button>
+    </div>
+    <div class="archive-tab-feedback" id="tabFeedback">
+      <div><h4>Trend Patterns</h4><p>Compares the account’s current behavior against historic adoption curves, human needs, mutations, and failure cases.</p></div>
+      <span class="tab-depth">Research depth · Advanced</span>
+    </div>
+
+    <section class="archive-metrics">
+      <article class="archive-metric"><small>Pattern match</small><b>91%</b><span>Historic mainstream trajectory</span></article>
+      <article class="archive-metric"><small>Trend age</small><b>17 mo</b><span>Since first visible adoption</span></article>
+      <article class="archive-metric"><small>Saturation</small><b>72%</b><span>Still viable, no longer early</span></article>
+      <article class="archive-metric"><small>Mutation rate</small><b>High</b><span>New variants appearing weekly</span></article>
+      <article class="archive-metric"><small>Memory depth</small><b>8 yrs</b><span>Comparable cycles located</span></article>
+    </section>
+
+    
+<section class="archive-intel-strip">
+  <article class="archive-research-card">
+    <h3>Cultural DNA · Raw Authenticity</h3>
+    <div class="lead">Different trends. Same human need.</div>
+    <div class="sub">Archive decomposes a trend into the emotional, behavioral, creative, and platform forces that actually make the idea spread.</div>
+    <div class="dna-grid">
+      <div class="dna-chip"><small>Human need</small><b>Belonging</b><span>Feels like participation, not spectatorship</span></div>
+      <div class="dna-chip"><small>Emotional driver</small><b>Closeness</b><span>Reduces distance between creator and viewer</span></div>
+      <div class="dna-chip"><small>Copy difficulty</small><b>Low</b><span>Easy to imitate without special tools</span></div>
+      <div class="dna-chip"><small>Mutation rate</small><b>High</b><span>Format adapts quickly across niches</span></div>
+      <div class="dna-chip"><small>Platform dependence</small><b>Medium</b><span>Native language helps, but idea travels</span></div>
+      <div class="dna-chip"><small>Fatigue risk</small><b>72%</b><span>Direct copies are cooling faster</span></div>
+    </div>
+  </article>
+
+  <article class="archive-research-card">
+    <h3>Competing hypotheses</h3>
+    <div class="lead">Why did it spread?</div>
+    <div class="hypothesis-list">
+      <div class="hypothesis"><div><b>Audience distrust of polish</b><span>Most likely primary force</span></div><strong>86%</strong></div>
+      <div class="hypothesis"><div><b>Lower participation friction</b><span>Strong distribution accelerant</span></div><strong>78%</strong></div>
+      <div class="hypothesis"><div><b>Nostalgia for casual media</b><span>Meaningful, but secondary</span></div><strong>61%</strong></div>
+    </div>
+  </article>
+</section>
+
+<section class="archive-research-card" style="margin-top:14px">
+  <h3>Trend Genome · Hover to inspect</h3>
+  <div class="lead">The idea is the unit of culture.</div>
+  <div class="sub">These trends look different on the surface. Archive groups them by the human behavior underneath.</div>
+  <div class="trend-lab">
+    <article class="trend-card span-3">
+      <span class="stage">Mutation</span><h4>Photo dumps</h4>
+      <p>Chronology becomes less important than emotional texture.</p>
+      <div class="trend-hover"><small>Origin</small><b>Casual album culture</b><span>Psychology: belonging + anti-performance</span><span>Historical cousin: disposable cameras</span><em>Prediction: survives as niche identity language</em></div>
+    </article>
+    <article class="trend-card span-3">
+      <span class="stage">Peak</span><h4>GRWM</h4>
+      <p>Routine becomes companionship and low-pressure intimacy.</p>
+      <div class="trend-hover"><small>Origin</small><b>Beauty tutorial culture</b><span>Psychology: companionship + self-disclosure</span><span>Historical cousin: bedroom vlogs</span><em>Prediction: shifts toward live, interactive formats</em></div>
+    </article>
+    <article class="trend-card span-3">
+      <span class="stage">Growth</span><h4>Founder-led brands</h4>
+      <p>The person becomes the trust layer for the company.</p>
+      <div class="trend-hover"><small>Origin</small><b>Creator-brand convergence</b><span>Psychology: trust transfer + identity</span><span>Historical cousin: celebrity endorsement</span><em>Prediction: next major marketing default</em></div>
+    </article>
+    <article class="trend-card span-3">
+      <span class="stage">Early</span><h4>Private social</h4>
+      <p>Audiences move from feeds toward smaller, chosen spaces.</p>
+      <div class="trend-hover"><small>Origin</small><b>Feed fatigue</b><span>Psychology: safety + meaningful belonging</span><span>Historical cousin: forums and group chats</span><em>Prediction: platform strategy shifts toward communities</em></div>
+    </article>
+  </div>
+</section>
+
+<section class="archive-intel-strip" style="margin-top:14px">
+  <article class="cultural-map">
+    <h3>Evolution map · Authenticity cycle</h3>
+    <div class="map-line" style="left:18%;top:44%;width:24%;transform:rotate(-14deg)"></div>
+    <div class="map-line" style="left:40%;top:38%;width:25%;transform:rotate(18deg)"></div>
+    <div class="map-line" style="left:42%;top:42%;width:28%;transform:rotate(-28deg)"></div>
+    <div class="map-line" style="left:65%;top:55%;width:20%;transform:rotate(18deg)"></div>
+    <div class="map-node" data-label="Disposable cameras" style="left:14%;top:42%"></div>
+    <div class="map-node" data-label="VSCO" style="left:38%;top:34%"></div>
+    <div class="map-node" data-label="Photo dumps" style="left:63%;top:51%"></div>
+    <div class="map-node" data-label="BeReal" style="left:68%;top:20%"></div>
+    <div class="map-node" data-label="Private social" style="left:83%;top:67%"></div>
+  </article>
+
+  <article class="archive-research-card">
+    <h3>Prediction engine</h3>
+    <div class="lead">What history suggests happens next.</div>
+    <div class="platform-shift">
+      <div class="shift-card">
+        <small>Next marketing strategy</small>
+        <b>Community-first launches</b>
+        <p>Brands will seed participation inside smaller trusted groups before broadcasting widely.</p>
+      </div>
+      <div class="shift-card">
+        <small>Next platform shift</small>
+        <b>Feeds become gateways</b>
+        <p>Public feeds drive discovery; private spaces hold loyalty, identity, and conversion.</p>
+      </div>
+    </div>
+    <div class="research-actions">
+      <button class="research-action active">Evidence</button>
+      <button class="research-action">Counter-patterns</button>
+      <button class="research-action">Platform risk</button>
+      <button class="research-action">Time horizon</button>
+    </div>
+  </article>
+</section>
+
+
+<section class="archive-grid">
+  <article class="archive-panel span-8 deep-panel">
+    <span class="tiny-ai">CO₂</span>
+    <h3>Account-specific trend lifecycle</h3>
+    <div class="panel-value" id="lifecycleTitle">Spectacle compression cycle</div>
+    <div class="account-match">
+      <div class="account-profile">
+        <small>Account under study</small>
+        <h4 id="accountName">MrBeast</h4>
+        <p id="accountProfileText">High-scale spectacle, globally legible stakes, episodic formats, and extreme promise density.</p>
+        <select class="lifecycle-select" id="accountSelect">
+          <option value="MrBeast">MrBeast</option>
+          <option value="Dream">Dream</option>
+          <option value="Duolingo">Duolingo</option>
+          <option value="Emma Chamberlain">Emma Chamberlain</option>
+        </select>
+      </div>
+      <div>
+        <div class="pattern-river" id="lifecycleRiver">
+          <div class="pattern-stage"><div class="pattern-column" style="height:26px"></div><b>Primitive</b><span>basic challenges</span></div>
+          <div class="pattern-stage"><div class="pattern-column" style="height:58px"></div><b>Format</b><span>repeatable stakes</span></div>
+          <div class="pattern-stage"><div class="pattern-column" style="height:105px"></div><b>Scale</b><span>budget as story</span></div>
+          <div class="pattern-stage"><div class="pattern-column" style="height:148px"></div><b>Compression</b><span>instant premise</span></div>
+          <div class="pattern-stage"><div class="pattern-column" style="height:120px"></div><b>Globalization</b><span>language-light</span></div>
+          <div class="pattern-stage"><div class="pattern-column" style="height:78px"></div><b>Next mutation</b><span>participatory worlds</span></div>
+        </div>
+        <div class="lifecycle-explanation" id="lifecycleExplanation"><b>Why this lifecycle:</b> MrBeast’s strongest historical pattern is not simply “challenge content.” It is the progressive compression of larger stakes into faster comprehension. Archive selects the lifecycle with the closest behavioral and distribution signature to the account.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="archive-panel span-4 deep-panel">
+    <span class="tiny-ai">CO₂</span>
+    <h3>Pattern DNA</h3>
+    <div class="panel-value">Distribution mechanics</div>
+    <svg class="archive-chart" viewBox="0 0 390 190" preserveAspectRatio="none">
+      <rect class="archive-bar hot" x="18" y="24" width="34" height="137" rx="4"/>
+      <rect class="archive-bar hot" x="76" y="45" width="34" height="116" rx="4"/>
+      <rect class="archive-bar hot" x="134" y="32" width="34" height="129" rx="4"/>
+      <rect class="archive-bar" x="192" y="76" width="34" height="85" rx="4"/>
+      <rect class="archive-bar" x="250" y="68" width="34" height="93" rx="4"/>
+      <rect class="archive-bar hot" x="308" y="39" width="34" height="122" rx="4"/>
+      <text class="archive-axis" x="5" y="180">Clarity</text><text class="archive-axis" x="65" y="180">Stakes</text>
+      <text class="archive-axis" x="118" y="180">Novelty</text><text class="archive-axis" x="178" y="180">Trust</text>
+      <text class="archive-axis" x="236" y="180">Copy</text><text class="archive-axis" x="292" y="180">Reach</text>
+    </svg>
+    <div class="archive-note">The selected account is compared against content mechanics, not genre labels. This avoids treating two videos as unrelated merely because one is gaming and the other is entertainment.</div>
+  </article>
+
+  <article class="archive-panel span-12 deep-panel">
+    <span class="tiny-ai">CO₂</span>
+    <h3>Deep evolution map</h3>
+    <div class="panel-value">Trace an idea from platform to retention behavior</div>
+    <div class="evolution-workbench">
+      <div class="evolution-canvas">
+        <div class="evolution-flow" id="evolutionFlow">
+          <div class="evo-column"><div class="evo-label">Platform</div>
+            <div class="evo-node" data-key="youtube"><strong>YouTube</strong>Long-form recommendation system<span class="score">2005 → present</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Category</div>
+            <div class="evo-node" data-key="minecraft"><strong>Minecraft</strong>Infinite sandbox + communal lore<span class="score">High creator extensibility</span></div>
+            <div class="evo-node" data-key="gaming"><strong>Gaming video</strong>Skill, reaction, narrative<span class="score">Broad parent behavior</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Era</div>
+            <div class="evo-node" data-key="2021"><strong>2021</strong>Lockdown-aftershock attention<span class="score">Long sessions remain elevated</span></div>
+            <div class="evo-node" data-key="2012"><strong>2012–2014</strong>Let’s Play foundation<span class="score">Personality-led viewing</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Creator</div>
+            <div class="evo-node" data-key="dream"><strong>Dream</strong>Anonymous skill mythology<span class="score">Mystery + mastery</span></div>
+            <div class="evo-node" data-key="technoblade"><strong>Technoblade</strong>Voice, skill, dry humor<span class="score">Retention cousin</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Format</div>
+            <div class="evo-node" data-key="manhunt"><strong>Manhunt</strong>Simple rule, emergent chaos<span class="score">Repeatable narrative engine</span></div>
+            <div class="evo-node" data-key="speedrun"><strong>Speedrun</strong>Time pressure + competence<span class="score">Ancestor behavior</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Duration</div>
+            <div class="evo-node" data-key="45min"><strong>35–50 min</strong>Feature-length creator video<span class="score">High session commitment</span></div>
+            <div class="evo-node" data-key="editedlong"><strong>Edited long-form</strong>Removes routine downtime<span class="score">Dense event frequency</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Retention</div>
+            <div class="evo-node" data-key="songretention"><strong>Song-like retention</strong>Peaks, release, callback<span class="score">Rhythmic emotional structure</span></div>
+            <div class="evo-node" data-key="openloops"><strong>Nested open loops</strong>Multiple unresolved questions<span class="score">Reduces exit points</span></div>
+          </div>
+          <div class="evo-column"><div class="evo-label">Similar accounts</div>
+            <div class="evo-node" data-key="ryan"><strong>Ryan Trahan</strong>Long narrative challenge<span class="score">84% retention-shape match</span></div>
+            <div class="evo-node" data-key="airrack"><strong>Airrack</strong>Escalating spectacle<span class="score">79% structure match</span></div>
+            <div class="evo-node" data-key="sidemen"><strong>Sidemen</strong>Group event dynamics<span class="score">73% session match</span></div>
+          </div>
+        </div>
+      </div>
+      <aside class="evolution-detail" id="evolutionDetail">
+        <small>Selected research node</small>
+        <h3>YouTube</h3>
+        <p>YouTube’s recommendation environment rewards sessions and repeat viewing, allowing highly structured long-form formats to evolve in a way that short-feed platforms usually cannot sustain.</p>
+        <div class="detail-stat-grid">
+          <div class="detail-stat"><span>Role</span><b>Platform ancestor</b></div>
+          <div class="detail-stat"><span>Confidence</span><b>96%</b></div>
+          <div class="detail-stat"><span>Main force</span><b>Session depth</b></div>
+          <div class="detail-stat"><span>Mutation</span><b>Long-form series</b></div>
+        </div>
+        <div class="similar-list"><small>Connected evidence</small>
+          <div class="similar-item"><b>Recommendation mechanics:</b> sustained watch sessions matter more than isolated clicks.</div>
+          <div class="similar-item"><b>Creator consequence:</b> stories can accumulate lore across videos and years.</div>
+          <div class="similar-item"><b>Strategic consequence:</b> formats need recognizable premises with enough internal variation to avoid fatigue.</div>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <article class="archive-panel span-12 deep-panel">
+    <span class="tiny-ai">CO₂</span>
+    <h3>Thumbnail evolution · MrBeast</h3>
+    <div class="panel-value">How visual persuasion changed, and why</div>
+    <div class="thumbnail-detail-grid">
+      <div class="thumb-era-list">
+        <div class="thumb-era"><div class="thumb-visual"></div><small>2015–2017</small><b>Literal explanation</b><p>Text and screenshots describe the activity. The viewer must read before understanding the premise.</p></div>
+        <div class="thumb-era"><div class="thumb-visual"></div><small>2018–2019</small><b>Visible stakes</b><p>Money, endurance, and deprivation become concrete objects. The challenge is readable in one glance.</p></div>
+        <div class="thumb-era"><div class="thumb-visual"></div><small>2020–2021</small><b>Scale compression</b><p>One face, one object, one contrast. Background detail is sacrificed for mobile legibility.</p></div>
+        <div class="thumb-era"><div class="thumb-visual"></div><small>2022–2024</small><b>Impossible worlds</b><p>The thumbnail depicts a full scenario rather than a moment, selling consequence before chronology.</p></div>
+        <div class="thumb-era"><div class="thumb-visual"></div><small>2025–2026</small><b>Global shorthand</b><p>Less language, cleaner silhouettes, and emotion readable across cultures and device sizes.</p></div>
+      </div>
+      <div>
+        <h3 style="position:static">Measured visual shifts</h3>
+        <div class="thumb-metrics">
+          <div class="thumb-metric-row"><span>Text dependence</span><div class="thumb-meter"><i style="width:18%"></i></div><b>−71%</b></div>
+          <div class="thumb-metric-row"><span>Face prominence</span><div class="thumb-meter"><i style="width:87%"></i></div><b>+62%</b></div>
+          <div class="thumb-metric-row"><span>Object count</span><div class="thumb-meter"><i style="width:28%"></i></div><b>−44%</b></div>
+          <div class="thumb-metric-row"><span>Premise clarity</span><div class="thumb-meter"><i style="width:94%"></i></div><b>+73%</b></div>
+          <div class="thumb-metric-row"><span>Cross-language legibility</span><div class="thumb-meter"><i style="width:91%"></i></div><b>+81%</b></div>
+        </div>
+        <div class="archive-note"><b style="color:#dff4ff;font-weight:400">Strategic interpretation:</b> The thumbnails evolved from evidence of what happened into compressed promises of what the viewer will emotionally experience. Archive would compare these shifts against CTR, traffic source, title structure, audience geography, and copycat saturation when connected to authorized account data.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="archive-panel span-6 deep-panel">
+    <span class="tiny-ai">CO₂</span>
+    <h3>Historical pattern search</h3>
+    <div class="panel-value">Search for a behavioral cousin</div>
+    <div class="pattern-search">
+      <input id="patternSearchInput" value="45-minute gaming videos with song-like retention" aria-label="Historical pattern search">
+      <button id="patternSearchBtn">Search Archive</button>
+    </div>
+    <div class="pattern-results" id="patternResults">
+      <div class="pattern-result"><div><b>Televised competition arcs</b><span>Escalation, callbacks, elimination pressure, and periodic emotional release.</span></div><strong>88%</strong></div>
+      <div class="pattern-result"><div><b>Serialized YouTube challenge videos</b><span>Recognizable premise with high internal event density and cumulative stakes.</span></div><strong>84%</strong></div>
+      <div class="pattern-result"><div><b>Concept albums and pop-song structure</b><span>Tension and payoff occur rhythmically rather than at one final climax.</span></div><strong>77%</strong></div>
+    </div>
+  </article>
+
+  <article class="archive-panel span-6 deep-panel">
+    <span class="tiny-ai">CO₂</span>
+    <h3>Trends that could be brought back now</h3>
+    <div class="panel-value">Dormant ideas with current cultural fit</div>
+    <div class="revival-grid">
+      <div class="revival-card"><small>2009–2013</small><h4>Collaborative response videos</h4><p>Revive as multi-creator chains with one evolving premise, not detached stitches.</p><div class="revival-score">89% <span>revival fit</span></div></div>
+      <div class="revival-card"><small>2012–2016</small><h4>Personality-first series</h4><p>Recurring low-budget formats could counter audience fatigue with overproduced spectacle.</p><div class="revival-score">86% <span>revival fit</span></div></div>
+      <div class="revival-card"><small>2014–2018</small><h4>Internet scavenger hunts</h4><p>Cross-platform clues now pair naturally with private communities and live participation.</p><div class="revival-score">82% <span>revival fit</span></div></div>
+      <div class="revival-card"><small>2007–2011</small><h4>Creator-made web events</h4><p>Scheduled communal viewing could regain value as feeds become increasingly fragmented.</p><div class="revival-score">78% <span>revival fit</span></div></div>
+    </div>
+  </article>
+</section>
+
+
+    <div class="archive-footer">
+      <b>Archive is a reconstruction engine.</b> In production, timelines would separate verified public records, inferred pattern links, and missing historical data.
+    </div>
+  </div>
+</section>
+
+<section id="fusion" class="view fusion-view">
+  <div class="fusion-stage" id="fusionStage">
+    <button class="fusion-return" onclick="showView('home')">← Return to Home</button>
+    <div class="fusion-title">Fusion · Opportunity Engine</div>
+    <div class="fusion-dust" id="fusionDust"></div>
+
+    <div class="fusion-consciousness">
+      <div class="fusion-core-wrap" id="fusionCoreWrap">
+        <div class="jarvis-core" id="jarvisCore" aria-label="Wake CO2 AI">
+          <div class="gravity-lens lens-a"></div>
+          <div class="gravity-lens lens-b"></div>
+
+          <div class="void-core">
+            <div class="soul-mark">CO₂</div>
+          </div>
+
+          <div class="wisp-segment segment-a"></div>
+          <div class="wisp-segment segment-b"></div>
+          <div class="wisp-segment segment-c"></div>
+          <div class="wisp-segment segment-d"></div>
+          <div class="wisp-segment segment-e"></div>
+          <div class="wisp-segment segment-f"></div>
+          <div class="wisp-segment segment-g"></div>
+          <div class="wisp-segment segment-h"></div>
+          <div class="wisp-segment segment-i"></div>
+
+          <div class="energy-link link-a"></div>
+          <div class="energy-link link-b"></div>
+          <div class="energy-link link-c"></div>
+
+          <div class="soul-particle particle-a"></div>
+          <div class="soul-particle particle-b"></div>
+          <div class="soul-particle particle-c"></div>
+          <div class="soul-particle particle-d"></div>
+          <div class="soul-particle particle-e"></div>
+          <div class="soul-particle particle-f"></div>
+          <div class="soul-particle particle-g"></div>
+          <div class="soul-particle particle-h"></div>
+          <div class="soul-particle particle-i"></div>
+          <div class="soul-particle particle-j"></div>
+          <div class="soul-particle particle-k"></div>
+
+          <div class="answer-glow"></div>
+          <div class="collapse-flash"></div>
+        </div>
+      </div>
+      <div class="jarvis-status" id="jarvisStatus">Click CO₂ to wake the system</div>
+
+      <div class="fusion-input-space">
+        <textarea id="fusionQuery" class="fusion-query" rows="2"
+          placeholder="What opportunity are you looking for?"></textarea>
+        <div class="fusion-response" id="fusionResponse"></div>
+      </div>
+      <div class="fusion-enter-hint" id="fusionHint">Press Enter to ask · Shift + Enter for a new line</div>
+    </div>
+  </div>
+
+  
+<div class="opportunity-board" id="opportunityBoard">
+  <div class="fusion-section-label" id="opportunityLabel">Opportunities surfaced for you</div>
+  <div id="opportunityCards" style="display:contents"></div>
+</div>
+
+  <aside class="partnership-halo" id="partnershipHalo" onclick="openHalo(event)">
+    <div class="halo-symbol">◯</div>
+    <div class="halo-panel">
+      <button class="close-halo" onclick="closeHalo(event)">×</button>
+      <small>Active partnerships</small>
+      <h3>In motion</h3>
+      <div class="active-deal"><strong>Adobe · Editing workflow</strong><span>Draft due in 4 days</span><div class="deal-progress"><i style="width:68%"></i></div></div>
+      <div class="active-deal"><strong>DJI · Field test</strong><span>Product delivery scheduled</span><div class="deal-progress"><i style="width:34%"></i></div></div>
+      <div class="active-deal"><strong>REI · Ambassador review</strong><span>Waiting on brand response</span><div class="deal-progress"><i style="width:18%"></i></div></div>
+    </div>
+  </aside>
+
+  <div class="brand-drawer" id="brandDrawer">
+    <div class="brand-card">
+      <button class="brand-close" onclick="closeBrand()">×</button>
+      <div class="brand-card-top">
+        <div>
+          <small class="note-kicker">Verified brand</small>
+          <h2 id="brandName">Patagonia</h2>
+          <p id="brandCopy">A high-trust opportunity with strong alignment to your audience, visual language, and creator reputation.</p>
+        </div>
+        <div class="brand-gravity" id="brandGravity">96</div>
+      </div>
+      <div class="brand-hover">
+        Hover to understand this brand's Gravity
+        <div class="brand-breakdown">
+          <div class="metric-line"><span>Creator satisfaction</span><b>98</b></div>
+          <div class="metric-line"><span>Payment reliability</span><b>96</b></div>
+          <div class="metric-line"><span>Communication</span><b>94</b></div>
+          <div class="metric-line"><span>Creative freedom</span><b>97</b></div>
+          <div class="metric-line"><span>Repeat partnerships</span><b>91</b></div>
+        </div>
+      </div>
+      <button class="submit" style="margin-top:24px" onclick="this.textContent='Opportunity saved'">Save opportunity</button>
+    </div>
+  </div>
+</section>
+
+</main>
+<script>
+const space=document.getElementById('space');
+for(let i=0;i<230;i++){
+  const s=document.createElement('i');s.className='star';
+  const z=Math.random()*1.35+.2;s.style.width=z+'px';s.style.height=z+'px';
+  s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
+  s.style.setProperty('--t',(3+Math.random()*8)+'s');s.style.animationDelay=(-Math.random()*8)+'s';
+  space.appendChild(s);
+}
+function showView(id){
+  const target=document.getElementById(id);
+  if(!target){
+    console.warn('CO2 view not found:', id);
+    return;
+  }
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  target.classList.add('active');
+  window.scrollTo({top:0,left:0,behavior:'instant'});
+}
+function planet(c1,c2,glow){
+  const p=document.getElementById('customPlanet');
+  p.style.setProperty('--p1',c1);
+  p.style.setProperty('--p2',c2);
+  p.style.setProperty('--glow',glow);
+  planetState.p1=c1;
+  planetState.p2=c2;
+  planetState.glow=glow;
+}
+function toggleDetail(type){
+  const p=document.getElementById('customPlanet');
+  const on=p.classList.toggle('has-'+type);
+  document.getElementById(type+'Btn').classList.toggle('active',on);
+  if(type==='aurora')document.getElementById('auroraColors').classList.toggle('show',on);
+  if(type==='halo')document.getElementById('haloColors').classList.toggle('show',on);
+}
+function detailColor(type,color){
+  document.getElementById('customPlanet').style.setProperty('--'+type,color);
+  planetState[type]=color;
+}
+
+const planetState={
+  p1:'#15102b',
+  p2:'#6b41a8',
+  glow:'rgba(171,107,255,.5)',
+  aurora:'#87ffe1',
+  halo:'#bd9cff'
+};
+
+function syncStateFromCustomizer(){
+  const styles=getComputedStyle(document.getElementById('customPlanet'));
+  planetState.p1=styles.getPropertyValue('--p1').trim()||planetState.p1;
+  planetState.p2=styles.getPropertyValue('--p2').trim()||planetState.p2;
+  planetState.glow=styles.getPropertyValue('--glow').trim()||planetState.glow;
+  planetState.aurora=styles.getPropertyValue('--aurora').trim()||planetState.aurora;
+  planetState.halo=styles.getPropertyValue('--halo').trim()||planetState.halo;
+}
+function applySavedPlanet(saved){
+  const top=document.getElementById('profilePlanet');
+  if(!top) return;
+
+  top.style.background =
+    `radial-gradient(circle at 28% 24%, rgba(255,255,255,.24), transparent 18%),
+     radial-gradient(circle at 70% 72%, #000 0 56%, transparent 58%),
+     radial-gradient(circle at 40% 42%, ${saved.p2}, ${saved.p1} 66%, #030305 100%)`;
+
+  top.style.boxShadow = `0 0 34px ${saved.glow}`;
+  top.style.setProperty('--saved-glow', saved.glow);
+  top.style.setProperty('--saved-aurora', saved.auroraColor);
+  top.style.setProperty('--saved-halo', saved.haloColor);
+
+  top.classList.remove(
+    'has-profile-ring',
+    'has-profile-moon',
+    'has-profile-aurora',
+    'has-profile-halo'
+  );
+
+  if(saved.ring) top.classList.add('has-profile-ring');
+  if(saved.moon) top.classList.add('has-profile-moon');
+  if(saved.auroraEnabled) top.classList.add('has-profile-aurora');
+  if(saved.haloEnabled) top.classList.add('has-profile-halo');
+}
+
+function getCurrentPlanetSettings(){
+  const custom=document.getElementById('customPlanet');
+  const styles=getComputedStyle(custom);
+
+  return {
+    p1: styles.getPropertyValue('--p1').trim() || planetState.p1,
+    p2: styles.getPropertyValue('--p2').trim() || planetState.p2,
+    glow: styles.getPropertyValue('--glow').trim() || planetState.glow,
+    aurora: styles.getPropertyValue('--aurora').trim() || planetState.aurora,
+    halo: styles.getPropertyValue('--halo').trim() || planetState.halo,
+    ring: custom.classList.contains('has-ring'),
+    moon: custom.classList.contains('has-moon'),
+    auroraEnabled: custom.classList.contains('has-aurora'),
+    haloEnabled: custom.classList.contains('has-halo')
+  };
+}
+
+
+function savePlanet(){
+  const current=getCurrentPlanetSettings();
+
+  const saved={
+    p1:current.p1,
+    p2:current.p2,
+    glow:current.glow,
+    auroraColor:current.aurora,
+    haloColor:current.halo,
+    ring:current.ring,
+    moon:current.moon,
+    auroraEnabled:current.auroraEnabled,
+    haloEnabled:current.haloEnabled
+  };
+
+  localStorage.setItem('co2PlanetProfile',JSON.stringify(saved));
+
+  applySavedPlanet(saved);
+
+  const status=document.getElementById('saveStatus');
+  status.textContent='Saved. Your center CO₂ planet has been updated.';
+  status.classList.add('saved');
+
+  setTimeout(()=>{
+    document.querySelector('.galaxy').scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+
+(function loadSavedPlanet(){
+  try{
+    const saved=JSON.parse(localStorage.getItem('co2PlanetProfile'));
+    if(!saved) return;
+
+    applySavedPlanet({
+      p1:saved.p1,
+      p2:saved.p2,
+      glow:saved.glow,
+      auroraColor:saved.auroraColor || '#87ffe1',
+      haloColor:saved.haloColor || '#bd9cff',
+      ring:!!saved.ring,
+      moon:!!saved.moon,
+      auroraEnabled:!!saved.auroraEnabled,
+      haloEnabled:!!saved.haloEnabled
+    });
+  }catch(e){}
+})();
+
+
+const fusionStage=document.getElementById('fusionStage');
+const jarvisCore=document.getElementById('jarvisCore');
+const fusionCoreWrap=document.getElementById('fusionCoreWrap');
+const fusionQuery=document.getElementById('fusionQuery');
+const fusionResponse=document.getElementById('fusionResponse');
+const fusionHint=document.getElementById('fusionHint');
+const jarvisStatus=document.getElementById('jarvisStatus');
+
+function wakeFusion(){
+  fusionCoreWrap.classList.remove('waking');
+  void fusionCoreWrap.offsetWidth;
+  fusionCoreWrap.classList.add('awake','waking');
+  fusionQuery.classList.add('live');
+  fusionHint.classList.add('show');
+  jarvisStatus.textContent='CO₂ is listening';
+  setTimeout(()=>{
+    fusionCoreWrap.classList.remove('waking');
+    fusionQuery.focus();
+  },850);
+}
+if(jarvisCore) jarvisCore.addEventListener('click',wakeFusion);
+
+
+
+
+if(fusionStage){
+  let targetX=0, targetY=0, currentX=0, currentY=0;
+
+  fusionStage.addEventListener('mousemove',(e)=>{
+    const rect=fusionStage.getBoundingClientRect();
+    const cx=rect.left + rect.width/2;
+    const cy=rect.top + rect.height/2;
+    const dx=e.clientX-cx;
+    const dy=e.clientY-cy;
+    const dist=Math.max(1,Math.hypot(dx,dy));
+    targetX=dx/dist * Math.max(0,1-Math.min(dist,620)/620);
+    targetY=dy/dist * Math.max(0,1-Math.min(dist,620)/620);
+  });
+
+  fusionStage.addEventListener('mouseleave',()=>{
+    targetX=0;targetY=0;
+  });
+
+  function animateSoul(){
+    currentX += (targetX-currentX)*0.055;
+    currentY += (targetY-currentY)*0.055;
+
+    if(jarvisCore){
+      const wisps=jarvisCore.querySelectorAll('.wisp-segment');
+      wisps.forEach((wisp,index)=>{
+        const reach=[74,58,86,48,68,40,62,52,78][index] || 50;
+        const arc=[22,-18,28,-24,16,-14,20,-17,25][index] || 12;
+        const tx=currentX*reach;
+        const ty=currentY*reach;
+        const rot=currentX*arc-currentY*(arc*.35);
+        const scale=1+(Math.abs(currentX)+Math.abs(currentY))*(.035+(index*.002));
+        wisp.style.transform=`translate(${tx}px,${ty}px) rotate(${rot}deg) scale(${scale})`;
+        wisp.style.opacity=String(.36 + Math.min(.56,Math.hypot(currentX,currentY)*.7));
+      });
+
+      const particles=jarvisCore.querySelectorAll('.soul-particle');
+      particles.forEach((particle,index)=>{
+        const pull=34+index*6;
+        const swirl=(index%2===0 ? 1 : -1)*(18+index*2);
+        particle.style.transform=`translate(${currentX*pull-currentY*swirl}px,${currentY*pull+currentX*swirl}px)`;
+      });
+
+      const links=jarvisCore.querySelectorAll('.energy-link');
+      links.forEach((link,index)=>{
+        link.style.opacity=String(.04+Math.hypot(currentX,currentY)*(.28+index*.05));
+      });
+    }
+
+    requestAnimationFrame(animateSoul);
+  }
+  animateSoul();
+}
+
+
+if(fusionQuery){
+  fusionQuery.addEventListener('keydown',(e)=>{
+    if(e.key==='Enter' && !e.shiftKey){
+      e.preventDefault();
+      askFusion();
+    }
+  });
+}
+
+const fusionMatchSets = {
+  camping: {
+    label: 'Camping opportunities created for you',
+    intro: 'I found outdoor brands whose current campaigns align with camping, trail storytelling, and creator-led adventure content.',
+    cards: [
+      {match:97, brand:'Patagonia', kicker:'Outdoor · Paid', desc:'A cinematic camping story about simple gear, small adventures, and sustainable travel.', meta:['$3,200–$4,800','3 videos','September']},
+      {match:93, brand:'REI Co-op', kicker:'Camping · Ambassador', desc:'A recurring creator partnership centered on approachable camping and community outdoors.', meta:['6 months','Monthly','Recurring']},
+      {match:90, brand:'YETI', kicker:'Gear · Paid', desc:'A camp-kitchen and cooler campaign built around honest field use instead of polished studio content.', meta:['$2,800','4 posts','Product included']},
+      {match:88, brand:'The North Face', kicker:'Adventure · Paid', desc:'A short-form campaign about spontaneous weekend escapes and accessible outdoor exploration.', meta:['$3,500','3 weeks','Travel']},
+      {match:85, brand:'AutoCamp', kicker:'Hospitality · Stay + Paid', desc:'A desert camping weekend with creative freedom to direct the story in your own visual style.', meta:['$1,500 + stay','2 nights','California']},
+      {match:82, brand:'Coleman', kicker:'Camping · Product', desc:'A practical beginner-camping series focused on making the outdoors feel less intimidating.', meta:['$2,000 + gear','5 posts','Beginner audience']}
+    ]
+  },
+  surf: {
+    label: 'California surf opportunities created for you',
+    intro: 'I found California surf and coastal brands whose audiences overlap with your travel, lifestyle, and cinematic storytelling.',
+    cards: [
+      {match:96, brand:'Vissla', kicker:'California Surf · Paid', desc:'A coastal storytelling campaign around local surf culture, movement, and sustainability.', meta:['$3,000–$4,500','3 videos','California coast']},
+      {match:93, brand:'O’Neill', kicker:'Surf · Paid', desc:'A creator-led campaign focused on beach days, wetsuits, and honest California surf routines.', meta:['$3,200','4 posts','Santa Cruz']},
+      {match:90, brand:'Billabong', kicker:'Surf Lifestyle · Paid', desc:'A cinematic summer series blending surf, friendship, road trips, and coastal style.', meta:['$2,800–$4,000','5 posts','Summer']},
+      {match:88, brand:'Channel Islands', kicker:'Boards · Product + Paid', desc:'A surfboard field-test with room for personal narration and behind-the-scenes footage.', meta:['$2,400 + board','2 videos','Carpinteria']},
+      {match:85, brand:'Outerknown', kicker:'Sustainable Apparel · Paid', desc:'A California lifestyle campaign centered on responsible materials and ocean culture.', meta:['$2,600','3 posts','Los Angeles']},
+      {match:81, brand:'Sun Bum', kicker:'Beach · Paid', desc:'A playful beach-day content package designed for a relaxed, personality-first creator voice.', meta:['$1,800','4 shorts','California']}
+    ]
+  },
+  default: {
+    label: 'Opportunities surfaced for you',
+    intro: 'I found six opportunities worth your attention based on your audience, creative style, Gravity, and current brand signals.',
+    cards: [
+      {match:96, brand:'Patagonia', kicker:'Outdoor · Paid', desc:'A cinematic trail-story campaign built around small adventures and sustainable travel.', meta:['$3,200–$4,800','3 videos','September']},
+      {match:91, brand:'Adobe', kicker:'Creator Tools · Paid', desc:'A creator-workflow series focused on turning raw travel footage into a finished story.', meta:['$2,500–$4,000','2 videos','Remote']},
+      {match:88, brand:'DJI', kicker:'Travel · Product + Paid', desc:'A compact-camera field test designed around hiking, motion, and honest behind-the-scenes footage.', meta:['$1,800 + gear','4 posts','October']},
+      {match:84, brand:'AutoCamp', kicker:'Hospitality · Paid Stay', desc:'A desert-weekend story package with freedom to direct the concept in your own visual style.', meta:['$1,500 + stay','2 nights','Utah']},
+      {match:82, brand:'REI Co-op', kicker:'Community · Ambassador', desc:'A recurring creator partnership built around accessible outdoor experiences and community.', meta:['6 months','Monthly','Recurring']},
+      {match:79, brand:'Travel filmmaker', kicker:'Collaboration · Creator', desc:'A UK-based creator wants a co-directed short film about leaving one place and beginning again.', meta:['Shared ownership','Film','England']}
+    ]
+  }
+};
+
+function renderOpportunitySet(set){
+  const label=document.getElementById('opportunityLabel');
+  const container=document.getElementById('opportunityCards');
+  if(!label || !container) return;
+
+  label.textContent=set.label;
+  container.innerHTML=set.cards.map((card,index)=>`
+    <article class="opportunity-note" style="--tilt:${[-1.2,.8,-.5,1,-.8,.4][index]}deg">
+      <div class="note-kicker">${card.kicker}</div>
+      <div class="note-match">${card.match}<small>%</small></div>
+      <h3>${card.brand}</h3>
+      <p>${card.desc}</p>
+      <div class="note-meta">${card.meta.map(item=>`<span>${item}</span>`).join('')}</div>
+      <button class="note-action" onclick="openBrand('${card.brand.replace(/'/g,"\\'")}',${card.match})">Open brand →</button>
+    </article>
+  `).join('');
+}
+
+function pickMatchSet(query){
+  const q=query.toLowerCase();
+  if(q.includes('camp') || q.includes('hiking') || q.includes('outdoor')) return fusionMatchSets.camping;
+  if(q.includes('surf') || q.includes('california') || q.includes('beach') || q.includes('ocean')) return fusionMatchSets.surf;
+  return fusionMatchSets.default;
+}
+
+function askFusion(){
+  const q=fusionQuery.value.trim();
+  if(!q) return;
+
+  const set=pickMatchSet(q);
+  fusionResponse.classList.add('show');
+  fusionResponse.textContent='Reading your request and building a match set from audience fit, creative style, Gravity, geography, and active campaigns…';
+  jarvisStatus.textContent='CO₂ is thinking';
+  fusionCoreWrap.classList.add('thinking');
+
+  setTimeout(()=>{
+    renderOpportunitySet(set);
+    fusionResponse.innerHTML=set.intro;
+    jarvisStatus.textContent='Opportunities ready';
+    fusionCoreWrap.classList.remove('thinking');
+    fusionCoreWrap.classList.add('answering');
+    setTimeout(()=>fusionCoreWrap.classList.remove('answering'),950);
+    document.getElementById('opportunityBoard').scrollIntoView({behavior:'smooth',block:'start'});
+  },1050);
+}
+
+renderOpportunitySet(fusionMatchSets.default);
+
+
+function openHalo(event){
+  if(event.target.closest('.close-halo')) return;
+  document.getElementById('partnershipHalo').classList.add('open');
+}
+function closeHalo(event){
+  event.stopPropagation();
+  document.getElementById('partnershipHalo').classList.remove('open');
+}
+function openBrand(name,gravity){
+  document.getElementById('brandName').textContent=name;
+  document.getElementById('brandGravity').textContent=gravity;
+  document.getElementById('brandDrawer').classList.add('open');
+}
+function closeBrand(){
+  document.getElementById('brandDrawer').classList.remove('open');
+}
+
+
+(function createFusionDust(){
+  const dust=document.getElementById('fusionDust');
+  if(!dust) return;
+
+  for(let i=0;i<95;i++){
+    const star=document.createElement('i');
+    star.className='fusion-star';
+    const size=Math.random()<.82 ? .7+Math.random()*1.5 : 1.8+Math.random()*2.4;
+    star.style.width=size+'px';
+    star.style.height=size+'px';
+    star.style.left=(Math.random()*100)+'%';
+    star.style.top=(Math.random()*100)+'%';
+    star.style.animationDelay=(-Math.random()*12)+'s';
+    star.style.animationDuration=(5+Math.random()*9)+'s';
+    dust.appendChild(star);
+  }
+
+  for(let i=0;i<34;i++){
+    const rock=document.createElement('i');
+    rock.className='fusion-rock';
+    const size=2+Math.random()*12;
+    rock.style.width=size+'px';
+    rock.style.height=(size*.72)+'px';
+    rock.style.setProperty('--rock-y',(Math.random()*96)+'vh');
+    rock.style.setProperty('--rock-speed',(26+Math.random()*38)+'s');
+    rock.style.animationDelay=(-Math.random()*45)+'s';
+    dust.appendChild(rock);
+  }
+})();
+
+
+
+// PULSE interactions
+const pulseQuestion=document.getElementById('pulseQuestion');
+const pulseAnswer=document.getElementById('pulseAnswer');
+const pulseAsk=document.getElementById('pulseAsk');
+const pulseSoul=document.getElementById('pulseSoul');
+const pulseAIStage=document.getElementById('pulseAIStage');
+const pulsePanels=[...document.querySelectorAll('.pulse-panel')];
+
+const pulseModes={
+  overview:{
+    answer:"<strong>MrBeast’s scale is obvious. His repeatability is the real advantage.</strong> The channel turns enormous ideas into instantly understandable stories, then uses pacing and payoff to keep a global audience moving toward the same moment.",
+    topics:['overview']
+  },
+  growth:{
+    answer:"<strong>Growth is still compounding rather than relying on a single spike.</strong> The channel passed 500M subscribers in June 2026 and the public count is now around 508M. The useful signal is that attention remains elevated between major uploads.",
+    topics:['growth','prediction']
+  },
+  retention:{
+    answer:"<strong>Retention is built into the premise before editing begins.</strong> The rules are understood immediately, progress stays visible, stakes escalate, and the ending promises a concrete payoff. Editing amplifies a structure that is already easy to follow.",
+    topics:['retention','content','probability']
+  },
+  audience:{
+    answer:"<strong>The audience is global because the stories require very little cultural translation.</strong> Competition, survival, generosity, scale, and visible consequences are readable before a viewer understands every spoken word.",
+    topics:['audience','trust']
+  },
+  brutal:{
+    answer:"<strong>The danger is confusing production cost with idea strength.</strong> At this scale, a visually enormous video can still be strategically weaker when the premise is harder to repeat in one sentence. CO₂ would protect clarity before increasing spectacle.",
+    topics:['brutal','improvement','content']
+  }
+};
+
+function setPulseMode(mode){
+  const config=pulseModes[mode]||pulseModes.overview;
+  pulseAnswer.style.opacity='0';
+  if(pulseSoul){
+    const wrap=pulseSoul.closest('.pulse-soul');
+    wrap.classList.add('answering');
+    setTimeout(()=>wrap.classList.remove('answering'),1600);
+  }
+  setTimeout(()=>{
+    pulseAnswer.innerHTML=config.answer;
+    pulseAnswer.style.opacity='1';
+  },220);
+
+  pulsePanels.forEach(panel=>{
+    const tags=(panel.dataset.topic||'').split(' ');
+    const relevant=config.topics.some(topic=>tags.includes(topic));
+    panel.classList.toggle('focus',relevant);
+    panel.classList.toggle('dim',mode!=='overview'&&!relevant);
+  });
+  setTimeout(()=>pulsePanels.forEach(p=>p.classList.remove('dim')),2600);
+}
+
+function interpretPulseQuestion(){
+  const q=(pulseQuestion.value||'').toLowerCase();
+  let mode='overview';
+  if(q.includes('grow')||q.includes('subscriber')||q.includes('forecast')||q.includes('future')) mode='growth';
+  else if(q.includes('retention')||q.includes('watch')||q.includes('hook')||q.includes('video')) mode='retention';
+  else if(q.includes('audience')||q.includes('global')||q.includes('country')||q.includes('demographic')) mode='audience';
+  else if(q.includes('improve')||q.includes('wrong')||q.includes('truth')||q.includes('weak')||q.includes('fail')) mode='brutal';
+  setPulseMode(mode);
+}
+if(pulseAsk) pulseAsk.addEventListener('click',interpretPulseQuestion);
+if(pulseQuestion) pulseQuestion.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();interpretPulseQuestion()}});
+document.querySelectorAll('.pulse-suggestion').forEach(btn=>btn.addEventListener('click',()=>{
+  pulseQuestion.value=btn.dataset.prompt;
+  interpretPulseQuestion();
+}));
+document.querySelectorAll('.pulse-platform-tab').forEach(tab=>tab.addEventListener('click',()=>{
+  document.querySelectorAll('.pulse-platform-tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  pulseAnswer.innerHTML="<strong>"+tab.textContent+" signal selected.</strong> In a connected account, CO₂ would rebuild every chart from that platform’s native analytics and explain the differences in audience behavior.";
+}));
+const pulseStar=document.getElementById('pulseStar');
+if(pulseStar) pulseStar.addEventListener('click',()=>{
+  pulseStar.classList.toggle('saved');
+  pulseStar.textContent=pulseStar.classList.contains('saved')?'★ Starred':'☆ Star creator';
+});
+
+if(pulseAIStage && pulseSoul){
+  let tx=0,ty=0,cx=0,cy=0;
+  pulseAIStage.addEventListener('mousemove',e=>{
+    const r=pulseAIStage.getBoundingClientRect(), mx=r.left+r.width/2, my=r.top+260;
+    const dx=e.clientX-mx,dy=e.clientY-my,d=Math.max(1,Math.hypot(dx,dy));
+    const strength=Math.max(0,1-Math.min(d,650)/650);
+    tx=dx/d*strength;ty=dy/d*strength;
+  });
+  pulseAIStage.addEventListener('mouseleave',()=>{tx=0;ty=0});
+  (function pulseSoulMotion(){
+    cx+=(tx-cx)*.045;cy+=(ty-cy)*.045;
+    pulseSoul.querySelectorAll('.wisp-segment').forEach((w,i)=>{
+      const reach=[58,45,66,40,55,36,49,42,61][i]||42;
+      w.style.transform=`translate(${cx*reach}px,${cy*reach}px) rotate(${cx*(i%2? -14:16)}deg)`;
+    });
+    pulseSoul.querySelectorAll('.soul-particle').forEach((p,i)=>{
+      const pull=28+i*5,swirl=(i%2? -1:1)*(14+i);
+      p.style.transform=`translate(${cx*pull-cy*swirl}px,${cy*pull+cx*swirl}px)`;
+    });
+    requestAnimationFrame(pulseSoulMotion);
+  })();
+}
+
+
+// ARCHIVE interactions
+const archiveInput=document.getElementById('archiveInput');
+const archiveAnswer=document.getElementById('archiveAnswer');
+const archiveAsk=document.getElementById('archiveAsk');
+const archiveSave=document.getElementById('archiveSave');
+
+function runArchive(){
+  const q=(archiveInput.value||'').toLowerCase();
+  let answer="<strong>Archive found a pattern in the frozen record.</strong> The strongest changes are visible when the same idea is compared across multiple eras instead of treated as one isolated post.";
+  if(q.includes('mrbeast')||q.includes('thumbnail')){
+    answer="<strong>The evolution is less about becoming louder and more about becoming instantly legible.</strong> Early thumbnails explained the event. Later thumbnails compress the emotional stakes into one face, one object, and one impossible question.";
+  }else if(q.includes('trend')||q.includes('pattern')){
+    answer="<strong>This behavior is in the saturation phase, but one branch is still accelerating.</strong> The original format is cooling while creators who mutate it into a more personal version are outperforming direct copies.";
+  }else if(q.includes('date')||q.includes('internet')){
+    answer="<strong>Archive rebuilt a snapshot of that moment.</strong> It would surface the dominant formats, sounds, campaigns, platform changes, and creators shaping attention on that specific day.";
+  }else if(q.includes('duolingo')||q.includes('funny')){
+    answer="<strong>The shift happened when the mascot stopped acting like brand decoration and began acting like a creator.</strong> The account adopted recurring character behavior, platform-native humor, and audience participation rather than conventional campaign language.";
+  }
+  archiveAnswer.style.opacity='0';
+  setTimeout(()=>{archiveAnswer.innerHTML=answer;archiveAnswer.style.opacity='1'},180);
+}
+if(archiveAsk) archiveAsk.addEventListener('click',runArchive);
+if(archiveInput) archiveInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();runArchive()}});
+if(archiveSave) archiveSave.addEventListener('click',()=>{
+  archiveSave.classList.toggle('saved');
+  archiveSave.textContent=archiveSave.classList.contains('saved')?'◆ Preserved':'◇ Preserve search';
+});
+document.querySelectorAll('.archive-tab').forEach(tab=>tab.addEventListener('click',()=>{
+  document.querySelectorAll('.archive-tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  archiveAnswer.innerHTML="<strong>"+tab.textContent+" opened.</strong> CO₂ would rebuild the page around this lens while keeping the cold Archive environment intact.";
+}));
+
+
+// Archive research interactions
+document.querySelectorAll('.research-action').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.research-action').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const label=btn.textContent.trim();
+    const archiveAnswer=document.getElementById('archiveAnswer');
+    const messages={
+      'Evidence':"<strong>Evidence view:</strong> CO₂ would show the historical cycles, creator examples, adoption curves, and behavioral research supporting this prediction.",
+      'Counter-patterns':"<strong>Counter-pattern view:</strong> CO₂ would surface moments where the same cultural signals failed, preventing the model from mistaking similarity for certainty.",
+      'Platform risk':"<strong>Platform risk view:</strong> CO₂ would explain which parts of the prediction depend on recommendation systems, product design, moderation, and creator economics.",
+      'Time horizon':"<strong>Time horizon view:</strong> CO₂ currently reads this as a 12–24 month strategic shift rather than a short-lived content trend."
+    };
+    if(archiveAnswer) archiveAnswer.innerHTML=messages[label]||messages['Evidence'];
+  });
+});
+
+
+const ARCHIVE_TAB_INFO={
+ 'Trend Patterns':['Trend Patterns','Compares the selected account against historic adoption curves, trend DNA, mutations, audience fatigue, and failure cases.'],
+ 'Creator History':['Creator History','Reconstructs strategic eras in a creator’s career, including format changes, collaborators, audience shifts, and distribution inflection points.'],
+ 'Campaigns':['Campaigns','Studies campaign mechanics across categories: idea transfer, participation friction, trust, timing, and how concepts mutate when copied.'],
+ 'Visual Evolution':['Visual Evolution','Measures changes in thumbnails, editing grammar, typography, color, composition, faces, objects, and cross-language legibility.'],
+ 'Internet on a Date':['Internet on a Date','Rebuilds the dominant platforms, formats, creators, memes, marketing behavior, and audience psychology for a specific historical moment.'],
+ 'Deleted Signals':['Deleted Signals','Tracks missing, removed, abandoned, or failed ideas while separating verified records from inferred gaps and uncertain reconstruction.']
+};
+
+document.querySelectorAll('.archive-tab').forEach(tab=>{
+ tab.addEventListener('click',()=>{
+   document.querySelectorAll('.archive-tab').forEach(t=>t.classList.remove('active'));
+   tab.classList.add('active');
+   const info=ARCHIVE_TAB_INFO[tab.textContent.trim()]||[tab.textContent.trim(),'Archive research lens selected.'];
+   const feedback=document.getElementById('tabFeedback');
+   feedback.innerHTML=`<div><h4>${info[0]}</h4><p>${info[1]}</p></div><span class="tab-depth">Lens active · Advanced</span>`;
+   feedback.animate([{opacity:.45,transform:'translateY(-3px)'},{opacity:1,transform:'translateY(0)'}],{duration:260});
+ });
+});
+
+// Planet = time scanner
+document.querySelectorAll('.era-btn').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   document.querySelectorAll('.era-btn').forEach(b=>b.classList.remove('active'));
+   btn.classList.add('active');
+   document.getElementById('eraReadout').textContent=`Scanning ${btn.dataset.era} · cultural layer selected`;
+   document.getElementById('archivePlanet').style.filter=`hue-rotate(${Math.random()*22-11}deg) brightness(${1+Math.random()*.12})`;
+ });
+});
+let dragging=false,lastX=0,rotation=0;
+const stage=document.querySelector('.crystal-stage');
+if(stage){
+ stage.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;stage.setPointerCapture(e.pointerId)});
+ stage.addEventListener('pointermove',e=>{
+   if(!dragging)return;
+   rotation+=(e.clientX-lastX)*.45;lastX=e.clientX;
+   document.getElementById('archivePlanet').style.rotate=`${rotation}deg`;
+   const year=Math.max(2005,Math.min(2026,Math.round(2016+rotation/20)));
+   document.getElementById('eraReadout').textContent=`Manual scan centered on ${year} · drag to move through time`;
+ });
+ stage.addEventListener('pointerup',()=>dragging=false);
+}
+
+// Lifecycle selector
+const lifecycleData={
+ 'MrBeast':{title:'Spectacle compression cycle',profile:'High-scale spectacle, globally legible stakes, episodic formats, and extreme promise density.',why:'MrBeast’s closest behavioral lifecycle is the progressive compression of larger stakes into faster comprehension. The next likely mutation is not simply more budget; it is deeper participation and world-building.'},
+ 'Dream':{title:'Mythic skill narrative cycle',profile:'Anonymous identity, elite competence, simple rules, recurring rivals, and long-form emergent narrative.',why:'Dream maps most closely to a mythology cycle: mystery creates attention, demonstrated skill creates authority, recurring opponents create lore, and format repetition turns isolated videos into a shared universe.'},
+ 'Duolingo':{title:'Brand-to-character cycle',profile:'Mascot embodiment, recurring jokes, public interaction, platform-native editing, and controlled brand chaos.',why:'Duolingo’s lifecycle is a brand-character conversion. It stopped behaving like an advertiser and accumulated character memory, recurring relationships, audience expectations, and narrative consequences.'},
+ 'Emma Chamberlain':{title:'Anti-performance intimacy cycle',profile:'Conversational editing, mundane detail, self-aware imperfection, taste leadership, and parasocial trust.',why:'Emma’s strongest pattern is the repeated rejection of polished creator convention. Each mutation preserves emotional closeness while changing the visible aesthetic and commercial layer.'}
+};
+document.getElementById('accountSelect')?.addEventListener('change',e=>{
+ const d=lifecycleData[e.target.value];document.getElementById('accountName').textContent=e.target.value;
+ document.getElementById('lifecycleTitle').textContent=d.title;document.getElementById('accountProfileText').textContent=d.profile;
+ document.getElementById('lifecycleExplanation').innerHTML=`<b>Why this lifecycle:</b> ${d.why}`;
+});
+
+// Evolution details
+const evoDetails={
+ youtube:['YouTube','Platform ancestor','96%','Session depth','Long-form series','YouTube’s recommendation environment supports deep sessions, repeat viewing, and years of accumulated creator lore.','Recommendation mechanics reward sustained viewing patterns, not only isolated clicks.'],
+ minecraft:['Minecraft','Expandable cultural substrate','94%','Infinite possibility','Creator mythology','Minecraft acts less like one game and more like an expandable stage. Its rules are recognizable enough for immediate comprehension while remaining open enough for endless format invention.','The same world can support skill, roleplay, competition, education, horror, and social identity.'],
+ '2021':['2021','Attention environment','88%','Long sessions','Event viewing','This era combined residual lockdown viewing habits, creator-group mythology, and enormous appetite for recurring online events.','Longer creator videos could function as shared cultural appointments.'],
+ dream:['Dream','Creator mutation','93%','Mystery + mastery','Anonymous mythology','Dream fused elite skill with a partially hidden identity, allowing the audience to construct mythology around both competence and personality.','The absence of a visible face initially increased symbolic flexibility.'],
+ manhunt:['Manhunt','Narrative engine','97%','Simple rule','Emergent complexity','Manhunt compresses its premise into seconds: one runner, multiple hunters, one clear goal. The rule is fixed while the events remain unpredictable.','This creates repeatability without making each episode feel identical.'],
+ '45min':['35–50 minute video','Duration mutation','89%','High commitment','Feature-length creator media','Long duration works when event density, open loops, and relational investment make the video feel like an experience rather than an upload.','Length becomes an asset only after premise clarity earns the initial commitment.'],
+ songretention:['Song-like retention','Behavioral structure','91%','Rhythmic payoff','Retention composition','The strongest long videos often behave more like songs than lectures: repeated tension, release, variation, callback, and a recognizable emotional refrain.','This lets attention recover repeatedly instead of declining in one smooth line.'],
+ ryan:['Ryan Trahan','Retention cousin','84%','Narrative warmth','Challenge journey','Ryan Trahan shares the long-form challenge skeleton but places more weight on warmth, travel progression, and character encounters.','Similarity comes from retention shape and narrative architecture, not surface subject matter.'],
+ airrack:['Airrack','Structure cousin','79%','Escalation','Spectacle challenge','Airrack shares premise compression and escalation, though the emotional tone and credibility system differ.','Useful for separating format mechanics from creator-specific trust.'],
+ sidemen:['Sidemen','Session cousin','73%','Group dynamics','Event variety','Sidemen videos use social relationships as a retention engine. Viewers remain for evolving group reactions as much as the explicit challenge.','Group chemistry replaces some of the need for constant external escalation.']
+};
+document.querySelectorAll('.evo-node').forEach(node=>node.addEventListener('click',()=>{
+ document.querySelectorAll('.evo-node').forEach(n=>n.classList.remove('active'));node.classList.add('active');
+ const d=evoDetails[node.dataset.key]||[node.textContent,'Research node','80%','Pattern','Mutation','Archive connection selected.','Further connected evidence would appear here.'];
+ document.getElementById('evolutionDetail').innerHTML=`<small>Selected research node</small><h3>${d[0]}</h3><p>${d[5]}</p><div class="detail-stat-grid"><div class="detail-stat"><span>Role</span><b>${d[1]}</b></div><div class="detail-stat"><span>Confidence</span><b>${d[2]}</b></div><div class="detail-stat"><span>Main force</span><b>${d[3]}</b></div><div class="detail-stat"><span>Mutation</span><b>${d[4]}</b></div></div><div class="similar-list"><small>Connected evidence</small><div class="similar-item"><b>Interpretation:</b> ${d[6]}</div><div class="similar-item"><b>Research behavior:</b> Click adjacent nodes to trace how the idea changes across platform, era, format, duration, and audience response.</div></div>`;
+}));
+
+// Historical pattern search
+document.getElementById('patternSearchBtn')?.addEventListener('click', async()=>{
+ const q=document.getElementById('patternSearchInput').value;
+ const box=document.getElementById('patternResults');
+ box.innerHTML='<div class="pattern-result"><div><b>Searching cultural record…</b><span>Comparing behavioral structure, retention shape, psychology, and platform conditions.</span></div><strong>···</strong></div>';
+ try{
+   const data=await askArchive(q,'historical_pattern');
+   const items=data.pattern_matches||[];
+   box.innerHTML=items.length?items.map(x=>`<div class="pattern-result"><div><b>${escapeHtml(x.name)}</b><span>${escapeHtml(x.reason)}</span></div><strong>${Number(x.score||0)}%</strong></div>`).join(''):
+    '<div class="pattern-result"><div><b>No live matches returned</b><span>Start the CO₂ server or refine the behavioral description.</span></div><strong>—</strong></div>';
+ }catch(e){
+   box.innerHTML='<div class="pattern-result"><div><b>Local fallback</b><span>The live server is not connected. The downloadable project includes setup instructions.</span></div><strong>OFF</strong></div>';
+ }
+});
+
+// Live AI
+function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+async function askArchive(query,mode='full_research'){
+ const r=await fetch('/api/archive',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query,mode,account:document.getElementById('accountName')?.textContent||'Unknown',era:document.getElementById('eraReadout')?.textContent||''})});
+ if(!r.ok)throw new Error(await r.text());return r.json();
+}
+function renderSources(sources=[]){
+ document.getElementById('sourceCount').textContent=sources.length;
+ document.getElementById('sourceDrawer').innerHTML=sources.length?sources.map((s,i)=>`<div class="source-row"><span class="source-index">${String(i+1).padStart(2,'0')}</span><div><b>${escapeHtml(s.title||s.url||'Source')}</b><span>${escapeHtml(s.domain||'Public web')}</span></div><a href="${escapeHtml(s.url||'#')}" target="_blank" rel="noopener">Open ↗</a></div>`).join(''):'<div class="source-row"><span class="source-index">—</span><div><b>No sources yet</b><span>Run a live Archive query first.</span></div></div>';
+}
+document.getElementById('sourcesBtn')?.addEventListener('click',()=>document.getElementById('sourceDrawer').classList.toggle('open'));
+
+async function runArchiveLive(){
+ const input=document.getElementById('archiveInput'), answer=document.getElementById('archiveAnswer');
+ const q=input.value.trim();if(!q)return;
+ document.getElementById('liveState').textContent='Searching live culture';
+ document.getElementById('liveDot').classList.add('online');
+ document.getElementById('liveContext').textContent=`Researching: ${q}`;
+ answer.classList.add('rich');answer.innerHTML='<strong>CO₂ is searching the current public web and comparing it with historical pattern structures…</strong>';
+ try{
+   const d=await askArchive(q,'full_research');
+   answer.innerHTML=`<strong>${escapeHtml(d.thesis||'Archive analysis')}</strong><div class="ai-analysis-grid"><div class="ai-analysis-block"><small>Why culture evolved this way</small><p>${escapeHtml(d.cultural_explanation||'No explanation returned.')}</p></div><div class="ai-analysis-block"><small>Strategic prediction</small><p>${escapeHtml(d.prediction||'No prediction returned.')}</p></div><div class="ai-analysis-block"><small>Human behavior</small><p>${escapeHtml(d.human_behavior||'No behavior analysis returned.')}</p></div><div class="ai-analysis-block"><small>Uncertainty and counter-case</small><p>${escapeHtml(d.uncertainty||'No uncertainty analysis returned.')}</p></div></div>`;
+   renderSources(d.sources||[]);
+   document.getElementById('liveState').textContent='Live web research complete';
+   document.getElementById('liveContext').textContent=`${d.sources?.length||0} sources · ${d.as_of||'current analysis'} · confidence ${d.confidence||'not rated'}`;
+ }catch(e){
+   answer.innerHTML='<strong>Live research is not connected yet.</strong> Open this project through the included CO₂ server, add your OpenAI API key to <code>.env</code>, and Archive will search current web information rather than using static examples.';
+   document.getElementById('liveState').textContent='Local research mode';
+   document.getElementById('liveContext').textContent='Server unavailable — static expert interface remains active.';
+ }finally{document.getElementById('liveDot').classList.remove('online')}
+}
+document.getElementById('archiveAsk')?.replaceWith(document.getElementById('archiveAsk').cloneNode(true));
+document.getElementById('archiveAsk')?.addEventListener('click',runArchiveLive);
+document.getElementById('archiveInput')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();runArchiveLive()}});
+
+</script>
+</body></html>
